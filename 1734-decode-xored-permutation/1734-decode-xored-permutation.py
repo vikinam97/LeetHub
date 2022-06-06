@@ -1,6 +1,8 @@
 class Solution:
     def decode(self, encoded: List[int]) -> List[int]:
-        
+       
+        # Time-> O(n)
+        # Space -> O(n) because of the result array
         def findXorN(n):
             rem = n % 4
             if rem == 1: return 1
