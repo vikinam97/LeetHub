@@ -1,5 +1,8 @@
 class Solution:
     def decode(self, encoded: List[int], first: int) -> List[int]:
+        # Time -> O(n)
+        # Space -> O(n) for the result array
+        
         resultList = [0] * (len(encoded) + 1)
         
         resultList[0] = first
