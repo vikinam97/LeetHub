@@ -16,8 +16,9 @@ class Solution:
             return None
         
         for i in range(len(numbers)):
-            tempNumIdx = binarySearch(i, target - numbers[i])
-            if tempNumIdx != None and numbers[tempNumIdx] == (target - numbers[i]):
+            subTarget = target - numbers[i]
+            tempNumIdx = binarySearch(i, subTarget)
+            if tempNumIdx != None and numbers[tempNumIdx] == subTarget:
                 return [i+1, tempNumIdx+1]
             
         return None
