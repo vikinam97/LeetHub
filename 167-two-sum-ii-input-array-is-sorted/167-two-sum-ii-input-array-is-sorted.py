@@ -1,6 +1,7 @@
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         # Solution 2
+        
         i, j = 0, len(numbers) - 1
         while i < j:
             tempSum = numbers[i] + numbers[j]
