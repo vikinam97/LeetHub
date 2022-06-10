@@ -1,5 +1,9 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
+        # Solution
+        # advantage of contigious sub string sliding window
+        # Time O(n) traverse array ones
+        # Space O(n) max we store all char in set
         hashSet = {}
         charCount = 0
         maxSoFar = 0
@@ -20,6 +24,4 @@ class Solution:
                     i += 1
             maxSoFar = max(maxSoFar, j - i + 1)
             j += 1
-
-                
         return maxSoFar
