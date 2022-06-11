@@ -1,5 +1,8 @@
 class Solution:
     def minOperations(self, nums: List[int], x: int) -> int:
+        # Solution -> sub array sum = k 
+        # Time O(n)
+        # Space O(1)
         target = sum(nums) - x
         curr_sum, max_len = 0, 0
         start_idx = 0
