@@ -2,6 +2,9 @@ class Solution:
     def minFlips(self, a: int, b: int, c: int) -> int:
         count = 0
         for i in range(32):
+            if a == 0 and b == 0 and c == 0:
+                break
+                
             aBit = a & 1
             bBit = b & 1
             cBit = c & 1
