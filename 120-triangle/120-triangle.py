@@ -16,9 +16,6 @@ class Solution:
             prev = curr
             curr = [float("inf")] * len(triangle)
         
-        
-        print(prev)
-        
         minSum = float("inf")
         for i in range(len(prev)):
             minSum = min(minSum, prev[i])
