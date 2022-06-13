@@ -1,6 +1,8 @@
 For a given number N check if it is prime or not. A prime number is a number which is only divisible by 1 and itself.
 
 
+Link -> https://practice.geeksforgeeks.org/problems/prime-number2314/1#
+
 Example 1:
 
 Input:
