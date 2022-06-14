@@ -2,8 +2,6 @@
 
 class Solution:
     def geekNumber(self, N):
-        # code here
-        
         i = 2
         while i * i <= N:
             count = 0
