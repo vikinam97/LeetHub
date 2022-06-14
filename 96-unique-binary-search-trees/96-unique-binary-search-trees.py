@@ -10,7 +10,6 @@ class Solution:
             for j in range(i):
                 dp[i] += dp[j] * dp[i-1-j]
         
-        print(dp)
         return dp[n]
             
         
