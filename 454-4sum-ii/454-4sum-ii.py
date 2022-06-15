@@ -1,5 +1,8 @@
 class Solution:
     def fourSumCount(self, nums1: List[int], nums2: List[int], nums3: List[int], nums4: List[int]) -> int:
+        # Soltion - hash table
+        # Time - O(N^2)
+        # Space - O(N^2)
         dictSum = defaultdict(int)
         for num1 in nums1:
             for num2 in nums2:
