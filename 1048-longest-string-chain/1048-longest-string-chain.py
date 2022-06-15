@@ -1,5 +1,8 @@
 class Solution:        
     def longestStrChain(self, words: List[str]) -> int:
+        # Solution - using DICT and LIS
+        # Time - O(Nlog(N)) sorting the list
+        # Space - O(N) storing the dict
         
         # to sort list to traverse IN LIS
         words.sort(key=len)
