@@ -1,11 +1,15 @@
 class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        # Solution - using two pointer and 3Sum
+        # Time -> O(n^3) 
+        # Space -> O(1)
+        
         L = len(nums)
         ans = []
         if L<4:
             return ans
         nums.sort()
-        print(nums)
+
         for i in range(L-3):
             a = nums[i]
             if ans and a == ans[-1][0]:
@@ -33,6 +37,9 @@ class Solution:
         return ans
 # class Solution:
 #     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+#         Solution - hash map 
+#         Time - O(N^2) worse O(N^3)
+#         Space - O(N^2)
 #         sumDict = defaultdict(list)
         
 #         resultHash = {}
