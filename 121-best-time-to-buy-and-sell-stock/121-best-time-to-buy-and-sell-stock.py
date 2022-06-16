@@ -1,5 +1,8 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
+        # Solution - kadane algo
+        # Time O(N)
+        # Space O(N)
         dp = [0] * len(prices)
         maxSoFar = 0
         
@@ -9,7 +12,6 @@ class Solution:
             
             maxSoFar = max(maxSoFar, dp[i] - prices[i])
             
-        # print(dp)
         return maxSoFar
             
         
