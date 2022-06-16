@@ -11,7 +11,6 @@ class Solution:
                     maxSoFar = pMax
                     imax = i
                     jmax = j
-                # maxSoFar = max(maxSoFar, pMax)
                 i -= 1
                 j += 1
             
