@@ -9,10 +9,11 @@ class Solution:
             
             slidingSum += nums[i]
             
-            while monoq and (slidingSum - monoq[0][0]) >= k:
-                popped = monoq.popleft()
-                minSoFar = min(minSoFar, i - popped[1])
-                
+            if nums[i] > 0:
+                while monoq and (slidingSum - monoq[0][0]) >= k:
+                    popped = monoq.popleft()
+                    minSoFar = min(minSoFar, i - popped[1])
+            
             while monoq and slidingSum <= monoq[-1][0]:
                 monoq.pop()
             
