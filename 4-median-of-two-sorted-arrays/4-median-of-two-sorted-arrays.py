@@ -17,10 +17,10 @@ class Solution:
             i = (l + r) // 2
             j = half - (i+1) - 1
             
-            Aleft = A[i] if i>=0 else float('-inf')
-            Aright = A[i+1] if i+1<len(A) else float('inf')
-            Bleft = B[j] if j>=0 else float('-inf')
-            Bright = B[j+1] if j+1<len(B) else float('inf')
+            Aleft = A[i] if i >= 0 else float('-inf')
+            Aright = A[i + 1] if (i+1) < len(A) else float("inf")
+            Bleft = B[j] if j >= 0 else float('-inf')
+            Bright = B[j + 1] if (j+1) < len(B) else float('inf')
             
             if Aleft <= Bright and Bleft <= Aright:
                 if totalSize % 2 == 0:
