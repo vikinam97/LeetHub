@@ -1,5 +1,10 @@
 class Solution:
     def shortestSubarray(self, nums: List[int], k: int) -> int:
+        
+        # Solution - using monotonic deque
+        # Time - O(N)
+        # Space O(N)
+        
         slidingSum = 0
         minSoFar = float('Inf')
         
