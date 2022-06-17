@@ -1,5 +1,8 @@
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
+        # Solution - Quick Select Algo
+        # Time - O(N)
+        # Space - O(log(k)) recursive stack
         
         def partition(start, end):
             i, j = start, end
@@ -23,6 +26,5 @@ class Solution:
                 return partition(start, i-1)
             
             return partition(i+1, end)
-            
         return partition(0, len(nums) -1)
         
