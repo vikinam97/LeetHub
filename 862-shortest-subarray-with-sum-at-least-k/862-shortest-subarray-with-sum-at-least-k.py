@@ -7,11 +7,10 @@ class Solution:
 
         for i,n in enumerate(nums):
             sums += n
-            if n > 0:
-                while d and sums-d[0][1] >= k:
-                    res = min(res,i-d.popleft()[0])        
-            else:
-                while d and sums <= d[-1][1]:
+            while d and sums-d[0][1] >= k:
+                res = min(res,i-d.popleft()[0])        
+            # else:
+            while d and sums <= d[-1][1]:
                     d.pop()
             d.append((i,sums))
         if res == len(nums)+1:
