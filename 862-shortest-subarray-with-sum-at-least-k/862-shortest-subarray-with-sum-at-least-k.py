@@ -1,21 +1,58 @@
 class Solution:
-    def shortestSubarray(self, nums: List[int], K: int) -> int:
-        N = len(nums)
-        P = [0]
-        for x in nums:
-            P.append(P[-1] + x)
+    def shortestSubarray(self, nums: List[int], k: int) -> int:
+        
+        d = collections.deque([(-1,0)])
+        sums = 0
+        res = len(nums) + 1
 
-        #Want smallest y-x with Py - Px >= K
-        ans = N+1 # N+1 is impossible
-        monoq = collections.deque() #opt(y) candidates, represented as indices of P
-        for y, Py in enumerate(P):
-            #Want opt(y) = largest x with Px <= Py - K
-            while monoq and Py <= P[monoq[-1]]:
-                monoq.pop()
-
-            while monoq and Py - P[monoq[0]] >= K:
-                ans = min(ans, y - monoq.popleft())
-
-            monoq.append(y)
-
-        return ans if ans < N+1 else -1
+        for i,n in enumerate(nums):
+            sums += n
+            if n > 0:
+                while d and sums-d[0][1] >= k:
+                    res = min(res,i-d.popleft()[0])        
+            else:
+                while d and sums <= d[-1][1]:
+                    d.pop()
+            d.append((i,sums))
+        if res == len(nums)+1:
+            return -1
+        else:
+            return res
+        
+        
+#         slidingSum = 0
+#         minSoFar = float('Inf')
+        
+#         monoq = collections.deque()
+        
+#         for i in range(len(nums)):
+#             slidingSum += nums[i]
+#             minSoFar = min(minSoFar, i+1)
+            
+#             # sum, index
+#             lastPop = [float('Inf'), float('Inf')]
+            
+#             # minimize the window
+#             while monoq and (slidingSum - monoq[0][0]) >= k:
+#                 lastPop = monoq.popLeft()
+                
+#             if lastPop[0] != float('Inf'):
+#                 minSoFar = min(minSoFar, i - lastPop[1])
+                
+#             while monoq and monoq[0][0] < slidingSum:
+#                 monoq.popleft()
+            
+#             monoq.append([slidingSum, i])
+        
+        
+#         return minSoFar
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
