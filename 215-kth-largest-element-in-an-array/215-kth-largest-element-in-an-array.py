@@ -2,10 +2,6 @@ class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         
         def partition(start, end):
-            
-            if start > end:
-                return
-            
             i, j = start, end
             pivot = end
             
@@ -16,11 +12,11 @@ class Solution:
                 if nums[j] >= nums[pivot]:
                     j -= 1
                     continue
-                
                 nums[i], nums[j] = nums[j], nums[i]
-            
+                
             nums[i], nums[pivot] = nums[pivot], nums[i]
             
+            # selecting next apth
             if i == len(nums) - k:
                 return nums[i]
             elif i > len(nums) - k:
