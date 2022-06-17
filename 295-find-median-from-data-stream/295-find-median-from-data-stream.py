@@ -9,7 +9,6 @@ class MedianFinder:
 
     def addNum(self, num: int) -> None:
         heapq.heappush(self.maxHeap, -1 * num)
-        # heapq.heapify(self.maxHeap)
         if (self.minHeap and self.maxHeap and 
             ((-1 * self.maxHeap[0]) > self.minHeap[0])):
             ele = heapq.heappop(self.maxHeap)
