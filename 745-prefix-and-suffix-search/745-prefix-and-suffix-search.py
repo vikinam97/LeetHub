@@ -1,33 +1,37 @@
 class WordFilter:
 
     def __init__(self, words: List[str]):
-        self.trie={}
-        self.weight_marker='$'
-        w=self.weight_marker
-        for idx, word in enumerate(words):
-            word = word
-            length=len(word)
-            word = word + '#' + word
-            
-            for i in range(length):
-                curr=self.trie
-                curr[w]=idx 
-                for c in word[i:]:
-                    if c not in curr:
-                        curr[c]={}
-                    curr=curr[c]                    
-                    curr[w]=idx  # update the weight of substring    
-            # print(self.trie)
-            
-
-    def f(self, prefix: str, suffix: str) -> int:
-        curr=self.trie
-        for c in suffix + '#' + prefix:
-            if c not in curr:
-                return -1
-            curr=curr[c]
+        self.trie = {}
+        self.idxMark = '$' 
+        self.delimiter = '#'
+        # jst for simplicity
+        idMark =  self.idxMark
         
-        return curr[self.weight_marker] 
+        for idx in range(len(words)):
+            word = words[idx]
+            wrdLen = len(word)
+            word = word + self.delimiter + word
+            
+            for i in range(wrdLen):
+                cur = self.trie
+                # cur[idMark] = idx
+                for char in word[i:]:
+                    if char not in cur:
+                        cur[char] = {}
+                    cur = cur[char]
+                    cur[idMark] = idx
+            # print(self.trie)
+    def f(self, prefix: str, suffix: str) -> int:
+        
+        searchWrd = suffix + self.delimiter + prefix
+        cur = self.trie
+        for i in range(len(searchWrd)):
+            char = searchWrd[i]
+            if char not in cur:
+                return -1
+            cur = cur[char]
+
+        return cur[self.idxMark]
         
 
 
