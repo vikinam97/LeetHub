@@ -6,9 +6,11 @@ class Solution:
             if slidingSum + weights[i] > capacity:
                 dayCount += 1
                 slidingSum = weights[i]
+                if dayCount > days:
+                    return False
             else:
                 slidingSum += weights[i]
-        return dayCount <= days
+        return True
     
     def shipWithinDays(self, weights: List[int], days: int) -> int:
         
