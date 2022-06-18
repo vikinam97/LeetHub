@@ -5,9 +5,9 @@ class WordFilter:
         self.weight_marker='$'
         w=self.weight_marker
         for idx, word in enumerate(words):
-            word=word + '#'
+            word = word
             length=len(word)
-            word+=word
+            word = word + '#' + word
             
             for i in range(length):
                 curr=self.trie
@@ -16,7 +16,8 @@ class WordFilter:
                     if c not in curr:
                         curr[c]={}
                     curr=curr[c]                    
-                    curr[w]=idx  # update the weight of substring                        
+                    curr[w]=idx  # update the weight of substring    
+            # print(self.trie)
             
 
     def f(self, prefix: str, suffix: str) -> int:
@@ -27,3 +28,9 @@ class WordFilter:
             curr=curr[c]
         
         return curr[self.weight_marker] 
+        
+
+
+# Your WordFilter object will be instantiated and called as such:
+# obj = WordFilter(words)
+# param_1 = obj.f(prefix,suffix)
