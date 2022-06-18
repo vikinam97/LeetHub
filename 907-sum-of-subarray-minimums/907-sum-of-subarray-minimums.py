@@ -4,7 +4,7 @@ class Solution:
         stack=[-1]
         res=0
         for i in range(len(A)):
-            while A[i]<A[stack[-1]]:
+            while stack and A[i]<A[stack[-1]]:
                 idx=stack.pop()
                 res+=A[idx]*(i-idx)*(idx-stack[-1])
             stack.append(i)
