@@ -17,7 +17,7 @@ class Solution:
         
         newHead = None
         head = None 
-        # print(minHeap)
+
         while minHeap:
             node = heapq.heappop(minHeap)
             if newHead == None:
@@ -26,7 +26,7 @@ class Solution:
             else:
                 newHead.next = node
                 newHead = newHead.next
-            if node and node.next:
+            if node.next:
                 heapq.heappush(minHeap, node.next)
         
         return head
