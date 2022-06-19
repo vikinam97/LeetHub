@@ -1,4 +1,7 @@
 class Solution:
+    # Solution - Trie DFS
+    # Time - O(Nlog(N) + N*K)
+    # Space - O(26*N) 
     def traverse(self, trie, result):
         if trie == None or len(result) == 3:
             return
@@ -12,7 +15,6 @@ class Solution:
             self.traverse(trie[ltr], result)
             
     def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
-        
         trie = {}
         products.sort()
         self.end = '#'
@@ -25,8 +27,6 @@ class Solution:
                 cur = cur[char]
             cur[self.end] = product
             
-        # print(trie)
-        
         result = []
         cur = trie
         for ltr in searchWord:
