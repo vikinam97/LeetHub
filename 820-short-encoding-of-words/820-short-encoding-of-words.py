@@ -1,9 +1,13 @@
 class Solution:
+    # Solution - using suffix trie and unique strings
+    # Time - O(N*M)
+    # Space - O(N*M)
     
     def traverse(self, node):
         if node == None:
             return
         
+        # if this is the parent string and not sub string
         keys = node.keys()
         if len(keys) == 1 and self.end in node:
             return len(node[self.end]) + 1
@@ -17,7 +21,6 @@ class Solution:
         return sm
     
     def minimumLengthEncoding(self, words: List[str]) -> int:
-        
         # suffix trie formation
         trie = {}
         self.end = '$'
