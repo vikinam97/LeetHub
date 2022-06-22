@@ -4,7 +4,9 @@ class Solution:
     
     #Function to return the sorted array.
     def nearlySorted(self,a,n,k):
-        
+        # Solution - using min heap
+        # Time - O(NlogK)
+        # Space - O(K)
         heap = []
         for i in range(k):
             heapq.heappush(heap, a[i])
