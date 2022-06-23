@@ -1,6 +1,8 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        
+        # Solution Topological BFS
+        # Time O(N)
+        # Space O(N)
         preReq = defaultdict(list)
         courses = [0] * numCourses
         
