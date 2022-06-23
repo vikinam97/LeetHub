@@ -3,13 +3,12 @@
 
 class Solution:
     def smallestSumSubarray(self, A, N):
-        minSoFar = A[0], 0, 0
+        minSoFar = A[0]
         slidingSum = A[0]
-        j = 0
+        
         for i in range(1, len(A)):
             slidingSum = min(A[i], slidingSum+A[i])
             minSoFar = min(minSoFar, slidingSum)
-            
             
         return minSoFar
                 
