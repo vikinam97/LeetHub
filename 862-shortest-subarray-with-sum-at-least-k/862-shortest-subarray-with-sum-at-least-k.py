@@ -3,28 +3,25 @@ class Solution:
         
         # Solution - using monotonic deque
         # Time - O(N)
-        # Space O(N)
+        # Space O(N
         
+        dequeSum = collections.deque([(0, -1)])
+        minSoFar = float('inf')
         slidingSum = 0
-        minSoFar = float('Inf')
         
-        monoq = collections.deque([(0, -1)])
+        for idx in range(len(nums)):
+            slidingSum += nums[idx]
+            
+            while dequeSum and (slidingSum - dequeSum[0][0]) >= k:
+                popedEle = dequeSum.popleft()
+                minSoFar = min(minSoFar, idx - popedEle[1])
+            
+            while dequeSum and slidingSum <= dequeSum[-1][0]:
+                dequeSum.pop()
+            
+            dequeSum.append((slidingSum, idx))
         
-        for i in range(len(nums)):
-            
-            slidingSum += nums[i]
-            
-            # if nums[i] > 0:
-            while monoq and (slidingSum - monoq[0][0]) >= k:
-                popped = monoq.popleft()
-                minSoFar = min(minSoFar, i - popped[1])
-            
-            while monoq and slidingSum <= monoq[-1][0]:
-                monoq.pop()
-            
-            monoq.append((slidingSum, i))
-        
-        return minSoFar if minSoFar != float('Inf') else -1
+        return minSoFar if minSoFar != float('inf') else -1
         
         
         
