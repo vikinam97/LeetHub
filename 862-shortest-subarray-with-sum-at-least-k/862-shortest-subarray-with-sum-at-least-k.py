@@ -5,7 +5,7 @@ class Solution:
         # Time - O(N)
         # Space O(N
         
-        dequeSum = collections.deque([(0, -1)])
+        dequeSum = collections.deque([[0, -1]])
         minSoFar = float('inf')
         slidingSum = 0
         
@@ -19,7 +19,7 @@ class Solution:
             while dequeSum and slidingSum <= dequeSum[-1][0]:
                 dequeSum.pop()
             
-            dequeSum.append((slidingSum, idx))
+            dequeSum.append([slidingSum, idx])
         
         return minSoFar if minSoFar != float('inf') else -1
         
