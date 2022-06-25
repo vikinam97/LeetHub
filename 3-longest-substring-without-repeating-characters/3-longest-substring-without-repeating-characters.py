@@ -9,7 +9,6 @@ class Solution:
             seenMap[s[i]] = i
             print( s[i], j, i)
             maxSoFar = max(maxSoFar, i - j + 1)
-        
         return maxSoFar
                 
         
