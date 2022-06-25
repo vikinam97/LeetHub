@@ -4,7 +4,7 @@ class HeapNode:
         self.val = val
     
     def __lt__(self, other):
-        return self.weight < other.weight 
+        return self.weight > other.weight 
 
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
@@ -13,7 +13,7 @@ class Solution:
         
         result = []
         for i in range(len(nums)):
-            heapq.heappush(maxHeap, HeapNode(-1 * nums[i], i))
+            heapq.heappush(maxHeap, HeapNode(nums[i], i))
             
             if (i - j + 1) > k:
                 j += 1
@@ -21,11 +21,8 @@ class Solution:
             while maxHeap and maxHeap[0].val < j:
                 a = heapq.heappop(maxHeap)
                 
-#             # for z in range(len(maxHeap)):
-#             #     print(maxHeap[z].weight, maxHeap[z].val)
-                
             if (i - j + 1) == k:
-                result.append(-1 * maxHeap[0].weight)
+                result.append(maxHeap[0].weight)
                 
         return result
         
