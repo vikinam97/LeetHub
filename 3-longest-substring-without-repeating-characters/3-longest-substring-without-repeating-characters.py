@@ -5,8 +5,8 @@ class Solution:
         maxSoFar = 0
         j = 0
         for i in range(len(s)):
-            if s[i] in seenMap :
-                j = max(j, seenMap[s[i]] + 1)
+            if s[i] in seenMap and seenMap[s[i]] >= j:
+                j = seenMap[s[i]] + 1
             seenMap[s[i]] = i
             print( s[i], j, i)
             maxSoFar = max(maxSoFar, i - j + 1)
