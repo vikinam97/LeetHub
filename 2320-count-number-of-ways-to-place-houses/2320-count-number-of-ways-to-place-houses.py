@@ -16,7 +16,7 @@ class Solution:
             a = b
             b = ans
     
-        return (ans * ans) % MOD
+        return ((ans% MOD) * (ans% MOD)) % MOD
 # class Solution:
 #     def countHousePlacements(self, n: int) -> int:
 #         def fib(x):
