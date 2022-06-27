@@ -7,12 +7,18 @@ class MyStack:
         self.queue.append(x)
 
     def pop(self) -> int:
-        tempQueue = []
-        while len(self.queue) > 1:
-            tempQueue.append(self.queue.pop(0))
-        result = self.queue.pop()
-        while tempQueue:
-            self.queue.append(tempQueue.pop(0))
+        # tempQueue = []
+        # while len(self.queue) > 1:
+        #     tempQueue.append(self.queue.pop(0))
+        # result = self.queue.pop()
+        # while tempQueue:
+        #     self.queue.append(tempQueue.pop(0))
+        
+        length = len(self.queue)
+        while length > 1:
+            self.queue.append(self.queue.pop(0))
+            length -= 1
+        result = self.queue.pop(0)
         return result
 
     def top(self) -> int:
