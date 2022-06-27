@@ -10,13 +10,13 @@ class Solution:
 #             return c
         a, b = 1, 1
         ans = 0
-        MOD = 10 **9 + 7
+        MOD = 10 ** 9 + 7
         for i in range(n):
             ans = a + b
             a = b
             b = ans
     
-        return (ans ** 2) % MOD
+        return (ans * ans) % MOD
 # class Solution:
 #     def countHousePlacements(self, n: int) -> int:
 #         def fib(x):
