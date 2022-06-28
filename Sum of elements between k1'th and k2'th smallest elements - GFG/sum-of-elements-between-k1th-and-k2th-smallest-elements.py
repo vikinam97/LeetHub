@@ -4,9 +4,8 @@ class Solution:
     def sumBetweenTwoKth(self, A, N, K1, K2):
         # Solution - sorting and hashing
         # Time O(NlogN) sorting
-        # Space O(N) hash map
+        # Space O(1) hash map
         temp = sorted(A)
-        idxHash = {}
         
         start = K1-1
         end = K2-1
