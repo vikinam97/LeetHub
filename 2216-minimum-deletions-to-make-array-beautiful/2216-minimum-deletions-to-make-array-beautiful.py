@@ -6,13 +6,6 @@ class Solution:
             idx = i - deletedCount
             if idx & 1 == 0 and nums[i] == nums[i+1]:
                 deletedCount += 1
-            # if ((idx & 1 == 0) and nums[i] != nums[i+1]) or (idx & 1 == 1):
-                # stack.append(nums[i])
-            # elif (idx & 1 == 1):
-                # stack.append(nums[i])
-            # else:
-                # deletedCount += 1
-        # stack.append(nums[-1])
         
         if (len(nums) - deletedCount) & 1 == 1:
             deletedCount += 1
