@@ -2,14 +2,15 @@
 
 class Solution:
     def sumBetweenTwoKth(self, A, N, K1, K2):
+        # Solution - sorting and hashing
+        # Time O(NlogN) sorting
+        # Space O(N) hash map
         temp = sorted(A)
         idxHash = {}
-        for i in range(len(A)):
-            idxHash[temp[i]] = i
         
-        start = idxHash[temp[K1-1]]
-        end = idxHash[temp[K2-1]]
-        # print(temp, start, end)
+        start = K1-1
+        end = K2-1
+        
         return sum(temp[start+1:end])
         
         
