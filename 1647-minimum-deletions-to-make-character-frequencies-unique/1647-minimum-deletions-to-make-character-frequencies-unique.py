@@ -1,11 +1,13 @@
 class Solution:
     def minDeletions(self, s: str) -> int:
+        # Solution - hash map and sorting
+        # Time - O(N) sorting only on max 26 len array
+        # Space - O(1) max 26 unique chars
         countHash = defaultdict(int)
         for char in s:
             countHash[char] += 1
         
         countingList = list(countHash.values())
-        print(countingList)
         countingList.sort(reverse=True)
 
         deleteCount = 0
