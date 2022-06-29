@@ -6,8 +6,8 @@ class Solution:
         result = []
         for i in range(len(people)):
             h, k = people[i]
-            # result.insert(k, people[i])
-            result = result[:k] + [people[i]] + result[k:]
+            result.insert(k, people[i])
+            # result = result[:k] + [people[i]] + result[k:]
         
         return result
         
