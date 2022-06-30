@@ -58,28 +58,22 @@ class LRUCache:
         self.curSize = 0
 
     def get(self, key: int) -> int:
+        # Time - O(1)
         if self.hash.get(key, None) != None:
             node = self.hash[key]
-            # print("get => ", key)
-            # self.queue.print();
             self.queue.remove(node)
             self.queue.insertLast(node)
-            # self.queue.print();
-            # print(" --------------- get end")
             return node.val
         else:
             return -1
 
     def put(self, key: int, value: int) -> None:
-        # self.queue.print();
-        # print("key => ", key)
+        # Time - O(1)
         if self.hash.get(key, None) != None:
             node = self.hash[key]
             self.queue.remove(node)
             node.val = value
             self.queue.insertLast(node)
-            # self.queue.print();
-            # print("------------")
             return
         
         if self.curSize < self.capacity:
@@ -87,8 +81,6 @@ class LRUCache:
             self.queue.insertLast(node)
             self.hash[key] = node
             self.curSize += 1
-            # self.queue.print();
-            # print("------------")
             return
         
         delNode = self.queue.removeFront();
@@ -96,9 +88,6 @@ class LRUCache:
         node = Node(key, value, None, None) 
         self.queue.insertLast(node)
         self.hash[key] = node
-        # self.queue.print();
-        # print("------------")
-                
 
 
 # Your LRUCache object will be instantiated and called as such:
