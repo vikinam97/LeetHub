@@ -1,5 +1,8 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
+        # Solution - using left and right max array
+        # Time -> O(N)
+        # Space -> O(N)
         
         rightMax = [0] * len(height)
         leftMax = [0] * len(height)
