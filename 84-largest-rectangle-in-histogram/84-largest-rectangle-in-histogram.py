@@ -6,7 +6,6 @@ class Solution:
             lastPopped = idx
             while stack and stack[-1][1] > height:
                 popped = stack.pop()
-                print(idx, popped)
                 area = (idx - popped[0]) * popped[1]
                 lastPopped = popped[0]
                 maxSoFar = max(maxSoFar, area)
