@@ -4,9 +4,15 @@ class HeapNode:
         self.val = val
     
     def __lt__(self, other):
+        # for max heap comparison operator
         return self.val > other.val
         
 class Solution:
+    # Solution - Heap
+    # Time - O(N) 
+    #     - heapify takes O(N) time only
+    # Space - O(N)
+    
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         heap = []
         freq = defaultdict(int)
