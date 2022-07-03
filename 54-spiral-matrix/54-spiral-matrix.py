@@ -2,27 +2,31 @@ class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         if not matrix:
             return []
-        rows, cols = len(matrix), len(matrix[0])
-		
-        visited = [[False] * cols for _ in range(rows)]
-
-        ans = []
-
-        drow = [0, 1, 0, -1]
-        dcol = [1, 0, -1, 0]
-		
-        curr_row = curr_col = state = 0
-		
-        for _ in range(rows * cols):
-            ans.append(matrix[curr_row][curr_col])
-            visited[curr_row][curr_col] = True
-            next_row = curr_row + drow[state]
-            next_col = curr_col + dcol[state]
+        
+        m, n = len(matrix), len(matrix[0])
+        directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+        seen = []
+        x, y = 0, 0
+        curDi = 0
+        result = []
+        
+        for i in range(m):
+            seen.append([0] * n)
             
-            if 0 <= next_row < rows and 0 <= next_col < cols and (not visited[next_row][next_col]):
-                curr_row, curr_col = next_row, next_col
+        
+        for i in range(m * n):
+            result.append(matrix[x][y])
+            seen[x][y] = 1
+            
+            nxtX = x + directions[curDi][0]
+            nxtY = y + directions[curDi][1]
+            
+            if 0 <= nxtX < m and 0 <= nxtY < n and seen[nxtX][nxtY] == 0:
+                x = nxtX
+                y = nxtY
             else:
-                state = (state + 1) % 4
-                curr_row, curr_col = curr_row + drow[state], curr_col + dcol[state]
-
-        return ans
+                curDi = (curDi + 1) % 4
+                x = x + directions[curDi][0]
+                y = y + directions[curDi][1]
+        
+        return result
