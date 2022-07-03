@@ -12,7 +12,6 @@ class Solution:
         
         for i in range(m):
             seen.append([0] * n)
-            
         
         for i in range(m * n):
             result.append(matrix[x][y])
