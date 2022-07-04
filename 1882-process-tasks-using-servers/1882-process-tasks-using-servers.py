@@ -25,6 +25,5 @@ class Solution:
             weight, idx = heapq.heappop(idle)
             res.append(idx)
             heapq.heappush(busy, (curr_time + task, weight, idx))
-            t += 1
                 
         return res
