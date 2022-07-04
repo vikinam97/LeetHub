@@ -5,4 +5,15 @@ class RangeFreqQuery:
             self.hashSet[arr[i]].append(i)
         
     def query(self, left: int, right: int, value: int) -> int:
-        return bisect_right(self.hashSet[value], right) - bisect_left(self.hashSet[value], left)
+        if value not in self.hashSet:
+            return 0
+        appearenceList = self.hashSet[value]
+        l = bisect_left(appearenceList, left)
+        r = bisect_right(appearenceList, right)
+        
+        return r - l
+
+
+# Your RangeFreqQuery object will be instantiated and called as such:
+# obj = RangeFreqQuery(arr)
+# param_1 = obj.query(left,right,value)
