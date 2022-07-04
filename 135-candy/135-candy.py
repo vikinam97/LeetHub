@@ -1,5 +1,8 @@
 class Solution:
     def candy(self, ratings: List[int]) -> int:
+        # Solution - Greedy - two way traversal
+        # Time - O(N)
+        # Space - O(N)
         left = [0] * len(ratings)
         right = [0] * len(ratings)
         left[0] = 1
