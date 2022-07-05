@@ -10,8 +10,6 @@ class Solution:
         if not node:
             return
         
-        # print(node.val, p , q, node.val == p)
-        
         if node == p or node == q:
             
             self.paths.append(curPath + [node])
