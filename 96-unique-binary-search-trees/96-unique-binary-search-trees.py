@@ -1,6 +1,6 @@
-class Solution1:
+class Solution:
     def numTrees(self, n: int) -> int:
-        # Solution - Dynamic programming
+        # Solution - Dynamic programming - catlan number
         # Time - O(N ^ 2)
         # Space - O(N)
         dp = [0] * (n + 1)
@@ -13,9 +13,9 @@ class Solution1:
         
         return dp[n]
 
-class Solution:
+class Solution1:
     def numTrees(self, n: int) -> int:
-        # Solution recurrence with memorization
+        # Solution recurrence with memorization - catlan number
         # Time O(N ^2)
         # space O(N) memo and call stack
         self.memo = {
