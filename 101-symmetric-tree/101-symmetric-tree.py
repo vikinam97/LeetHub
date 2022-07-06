@@ -1,5 +1,8 @@
 class Solution:    
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        # Solution - BFS
+        # Time - O(N)
+        # Space - O(N)
         if not root:
             return True
         bfs = [root]
@@ -12,21 +15,14 @@ class Solution:
                     nxtLevel.append(node.left)
                     nxtLevel.append(node.right)
                 else:
-                    lvl.append("N")
+                    lvl.append("")
             
-            # check mirror
-            print(lvl)
             for i in range(len(lvl) // 2):
                 if lvl[i] != lvl[(len(lvl)-1) - i]:
                     return False
                 
             bfs = nxtLevel
         return True
-            
-            
-        
-    
-
 
 class Solution1:    
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
