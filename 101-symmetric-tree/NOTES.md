@@ -1,5 +1,8 @@
-```
-class Solution:
+return False
+bfs = nxtLevel
+return True
+​
+class Solution1:
 def isSymmetric(self, root: Optional[TreeNode]) -> bool:
 # Solution - traversal recursive
 # Time - O(N)
