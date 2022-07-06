@@ -1,4 +1,4 @@
-class Solution:
+class Solution1:
     def numTrees(self, n: int) -> int:
         # Solution - Dynamic programming
         # Time - O(N ^ 2)
@@ -13,7 +13,7 @@ class Solution:
         
         return dp[n]
 
-class Solution1:
+class Solution:
     def numTrees(self, n: int) -> int:
         # Solution recurrence with memorization
         # Time O(N ^2)
