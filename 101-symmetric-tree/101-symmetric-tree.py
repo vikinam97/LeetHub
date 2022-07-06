@@ -4,7 +4,12 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution:
+class Solution:    
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return True
+        
+        return self.traverse(root.left, root.right)
     
     def traverse(self, left, right):
         if not left and not right:
@@ -14,10 +19,3 @@ class Solution:
             return False
         
         return self.traverse(left.left, right.right) and self.traverse(left.right, right.left)
-        
-    
-    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        if not root:
-            return True
-        
-        return self.traverse(root.left, root.right)
