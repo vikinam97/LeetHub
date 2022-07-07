@@ -10,12 +10,12 @@ class Solution:
             return
         
         if node.val >= maxSoFar:
-            self.goodNodes.append(node.val)
+            self.goodNodes += 1
             
         self.dfs(node.left, max(maxSoFar, node.val))
         self.dfs(node.right, max(maxSoFar, node.val))
         
     def goodNodes(self, root: TreeNode) -> int:
-        self.goodNodes = []
+        self.goodNodes = 0
         self.dfs(root, root.val)
-        return len(self.goodNodes)
+        return self.goodNodes
