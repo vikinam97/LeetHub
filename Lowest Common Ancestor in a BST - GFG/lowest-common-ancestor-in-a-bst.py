@@ -3,28 +3,22 @@
 
 #Function to find the lowest common ancestor in a BST. 
 def LCA(root, n1, n2):
-    def dfs(node, target, result = []):
+    def dfs(node, t1, t2):
         if not node:
             return None
+            
+        if node.data == t1 or node.data == t2:
+            return node
         
-        temp = result + [node]
-        if node.data == target:
-            temp.reverse()
-            return temp
+        left = dfs(node.left, n1, n2)
+        right = dfs(node.right, n1, n2)
         
-        return dfs(node.left, target, temp) or dfs(node.right, target, temp)
+        if left and right:
+            return node
         
-    path1 = dfs(root, n1)
-    path2 = dfs(root, n2)
+        return left or right 
     
-    hashMap = {}
-    for i in range(len(path1)):
-        hashMap[path1[i]] = 1
-    for i in range(len(path2)):
-        if hashMap.get(path2[i], 0):
-            return path2[i]
-    
-    return root
+    return dfs(root, n1, n2)
     
     
     
