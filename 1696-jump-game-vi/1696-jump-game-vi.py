@@ -6,7 +6,7 @@ class Solution:
         if not nums:
             return None
         
-        q = collections.deque([(nums[0],0)])
+        q = collections.deque([[nums[0],0]])
         
         for i in range(1, len(nums)):
             
@@ -18,7 +18,7 @@ class Solution:
             while q and q[-1][0] < curScore:
                 q.pop()
             
-            q.append((curScore, i))
+            q.append([curScore, i])
         
         return q[-1][0]
                  
