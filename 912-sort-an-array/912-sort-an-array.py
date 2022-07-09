@@ -4,6 +4,139 @@ class Solution:
         # return self.bubbleSort(nums)
         # return self.selectionSort(nums)
         # return self.quickSort(nums)
+        # return self.countingSort(nums)
+        # return self.radixSort(nums)
+        # return self.insertionSort(nums)
+        # return self.bucketSort(nums)
+        
+    def bucketSort(self, nums):
+        if len(nums) == 0:
+            return nums
+        
+        nofBuckets = 10
+        nmsMin = min(nums)
+        nmsMax = max(nums)
+        rnge = (nmsMax - nmsMin) / nofBuckets
+        
+        buckets = []
+        for i in range(nofBuckets):
+            buckets.append([])
+            
+        for i in range(len(nums)):
+            diff = (nums[i] - nmsMin) / rnge - int((nums[i] - nmsMin) / rnge)
+            
+            if(diff == 0 and nums[i] != nmsMin):
+                buckets[int((nums[i] - nmsMin) / rnge) - 1].append(nums[i])
+            else:
+                buckets[int((nums[i] - nmsMin) / rnge)].append(nums[i])
+        
+        result = []
+        for i in range(len(buckets)):
+            if len(buckets[i]) != 0:
+                buckets[i].sort()
+                result = result + buckets[i] 
+            
+        return result
+    
+    def insertionSort(self, nums):
+        # Solution - Insertion Sort
+        # Time - O(N^2)
+        # Space O(1)
+        for i in range(1, len(nums)):
+            j = i - 1
+            while j >= 0 and nums[j] > nums[j+1]:
+                nums[j], nums[j+1] = nums[j+1], nums[j]
+                j -= 1
+        
+        return nums
+    
+    def radixSort(self, nums):
+        # Solution - Radix sort
+        # Time - O(log(max(N)) * ( R + N ) ) 
+        #     R -> range of input
+        #     N -> array
+        # Space - (R + N)
+        def countingSortByDigit(nums, digit):
+            div = pow(10, digit)
+            result = [0] * len(nums)
+            rangeArray = [0] * (max(nums) + 1)
+            
+            for i in range(len(nums)):
+                d = math.trunc(nums[i] / div) % 10 
+                rangeArray[d] += 1
+            
+            for i in range(1, len(rangeArray)):
+                rangeArray[i] = rangeArray[i-1] + rangeArray[i]
+            
+            for i in range(len(nums) -1, -1 ,-1):
+                d = math.trunc(nums[i] / div) % 10
+                idx = rangeArray[d]
+                result[idx - 1] = nums[i]
+                rangeArray[d] -= 1
+            
+            return result 
+            
+        
+        maxinList = max(nums)
+        # count nof digits
+        digitCount = 0
+        while maxinList != 0:
+            digitCount += 1
+            maxinList = math.trunc(maxinList / 10)
+        
+        for i in range(digitCount):
+            nums = countingSortByDigit(nums, i)
+            
+        return nums
+        
+        
+
+    def countingSort(self, nums):
+        # Solution Counting sort
+        # Time - O(N)
+        # Space O(max(N))
+        result = [0] * len(nums)
+        freq = [0] * (max(nums) + 1)
+        
+        for i in range(len(nums)):
+            freq[nums[i]] += 1
+        
+        for i in range(1, len(freq)):
+            freq[i] = freq[i] + freq[i-1]
+        
+        for i in range(len(nums) - 1, -1, -1):
+            idx = freq[nums[i]]
+            result[idx-1] = nums[i]
+            freq[nums[i]] -= 1
+        
+        return result
+        
+    def quickSort1(self, nums):
+        # Solution Quick Sort - using dutch flag
+        # Time O(NlogN)
+        # Space O(1)
+        def partition(start, end):
+            if start >= end:
+                return
+
+            i = start - 1
+            j = start
+            pivot = end
+            while j < end:
+                if nums[j] < nums[pivot]:
+                    i += 1
+                    nums[i], nums[j] = nums[j], nums[i]
+                    j += 1
+                else: 
+                    j += 1
+            
+            nums[i+1], nums[pivot] = nums[pivot], nums[i+1]
+            
+            partition(start, i)
+            partition(i+2, end)
+
+        partition(0, len(nums)-1)
+        return nums
 
     def quickSort(self, nums):
         # Solution Quick Sort
@@ -13,23 +146,21 @@ class Solution:
             if start >= end:
                 return
 
-            i = start
-            j = end
+            i = start - 1
+            j = start
             pivot = end
-            while i < j:
-                while i < end and nums[i] < nums[pivot]:
+            while j < end:
+                if nums[j] < nums[pivot]:
                     i += 1
-                while j >= 0 and nums[j] >= nums[pivot]:
-                    j -= 1
-                if i >= j: 
-                    break
-
-                nums[i], nums[j] = nums[j], nums[i]
-
-            nums[i], nums[pivot] = nums[pivot], nums[i]
-
-            partition(start, i-1)
-            partition(i+1, end)
+                    nums[i], nums[j] = nums[j], nums[i]
+                    j += 1
+                else: 
+                    j += 1
+            
+            nums[i+1], nums[pivot] = nums[pivot], nums[i+1]
+            
+            partition(start, i)
+            partition(i+2, end)
 
         partition(0, len(nums)-1)
         return nums
