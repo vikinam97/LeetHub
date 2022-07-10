@@ -1,5 +1,9 @@
 class Solution:
     def minCost(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) -> int:
+        # Solution - backtracking with memorization
+        # Time - O(M*T*N^2)
+        # Space - O(M*T*N)
+        
         memo = {}
         def dfs(cur, prevPaint, t):
             if t < 0 or t > m-cur:
