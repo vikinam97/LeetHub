@@ -1,7 +1,7 @@
 class Solution:
-    # def minCost(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) -> int:
+    def minCost(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) -> int:
         
-    def minCost(self, houses, cost, m, n, target) -> int:
+    # def minCost(self, houses, cost, m, n, target) -> int:
         memo = {}
         def dfs(i, k, t):
             if t < 0 or t > m-i:
