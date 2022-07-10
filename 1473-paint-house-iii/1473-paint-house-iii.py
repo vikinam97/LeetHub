@@ -2,7 +2,7 @@ class Solution:
     def minCost(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) -> int:
         memo = {}
         def dfs(cur, prevPaint, t):
-            if t < 0:
+            if t < 0 or t > m-cur:
                 return float('inf')
             
             if cur == m:
