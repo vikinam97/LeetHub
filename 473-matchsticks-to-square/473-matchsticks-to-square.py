@@ -1,5 +1,9 @@
 class Solution:
     def makesquare(self, matchsticks: List[int]) -> bool:
+        # Solution - backtracking + memo
+        # Time - O(N^4)
+        # Space - O(N)
+        
         sm = sum(matchsticks)
         
         if sm < 4:
@@ -28,4 +32,3 @@ class Solution:
                     recur(cur+1, s1, s2, s3, s4 + matchsticks[cur]))
         
         return recur(0, 0,0,0,0)
-        
