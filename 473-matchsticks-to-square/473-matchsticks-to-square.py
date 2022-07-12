@@ -20,8 +20,8 @@ class Solution:
                         return True
                     res[i] -= matchsticks[index]
 
-                    # if res[i] == 0:
-                    #     break
+                    if res[i] == 0:
+                        break
 
             return False
 
