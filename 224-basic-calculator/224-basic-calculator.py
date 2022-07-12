@@ -54,13 +54,13 @@ class Solution:
                 result.append(char)
                 i += 1
             elif char == '-':
-                if s[i-1] == '(' and s[i+1].isdigit():
-                    j = i + 1
-                    while j < len(s) and s[j].isdigit():
-                        j += 1
-                    result.append(s[i:j])
-                    i = j
-                else:
+                # if s[i-1] == '(' and s[i+1].isdigit():
+                #     j = i + 1
+                #     while j < len(s) and s[j].isdigit():
+                #         j += 1
+                #     result.append(s[i:j])
+                #     i = j
+                # else:
                     result.append('-')
                     i += 1
         
