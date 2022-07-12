@@ -47,14 +47,12 @@ class Solution:
                     j += 1
                 result.append(s[i:j])
                 i = j
-            elif char == '(' or char == ')' or char == '+':
+            elif char == '(' or char == ')' or char == '+' or char == '-':
                 result.append(char)
                 i += 1
-            elif char == '-':
-                    result.append('-')
-                    i += 1
         
         return result
+    
     def evalRPN(self, tokens: List[str]) -> int:
         def getPopTwo(stck):
             return [int(stck.pop()), int(stck.pop())]
