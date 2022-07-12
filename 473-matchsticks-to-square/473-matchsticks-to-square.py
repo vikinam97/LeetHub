@@ -1,34 +1,28 @@
 class Solution:
     def makesquare(self, matchsticks: List[int]) -> bool:
-        # Solution - backtracking + memo
-        # Time - O(N^4)
-        # Space - O(N)
-        
-        sm = sum(matchsticks)
-        
-        if sm < 4:
+        perimeter = sum(matchsticks)
+
+        side = perimeter // 4
+        if side * 4 != perimeter:
             return False
-        if sm % 4 != 0:
+        matchsticks.sort(reverse = True)
+        res = [0 for _ in range(4)]
+
+        def backtrack(index):
+            if index == len(matchsticks):
+                return side == res[0] == res[1] == res[2]
+
+            for i in range(4):
+                if res[i] + matchsticks[index] <= side:
+                    res[i] += matchsticks[index]
+                    ret = backtrack(index + 1)
+                    if ret:
+                        return True
+                    res[i] -= matchsticks[index]
+
+                    if res[i] == 0:
+                        break
+
             return False
-        
-        k = sm // 4
-        memo = {}
-                
-        matchsticks.sort(reverse=True)
-        
-        @cache
-        def recur(cur, s1, s2, s3, s4):            
-            if cur >= len(matchsticks):
-                if s1 == k and s2 == k and s3 == k and s4 == k:
-                    return True
-                return False
-            
-            if s1 > k or s2 > k or s3 > k or s4 > k:
-                return False
-            
-            return (recur(cur+1, s1 + matchsticks[cur], s2, s3, s4) or 
-                    recur(cur+1, s1, s2 + matchsticks[cur], s3, s4) or 
-                    recur(cur+1, s1, s2, s3 + matchsticks[cur], s4) or 
-                    recur(cur+1, s1, s2, s3, s4 + matchsticks[cur]))
-        
-        return recur(0, 0,0,0,0)
+
+        return backtrack(0)
