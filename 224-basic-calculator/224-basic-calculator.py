@@ -1,4 +1,10 @@
-class Solution:
+class Solution:        
+    def calculate(self, s: str) -> int:
+        self.pre = { '+': 1, '-': 1, '(' : 1}
+        tokenized = self.tokenize(s)
+        postfix = self.converPostfix(tokenized)
+        return self.evalRPN(postfix)
+    
     def converPostfix(self, exprList):
         def checkInt(str):
             if str[0] in ('-', '+'):
@@ -25,15 +31,6 @@ class Solution:
             i += 1
         
         return result
-        
-        
-    def calculate(self, s: str) -> int:
-        self.pre = { '+': 1, '-': 1, '(' : 1}
-        tokenized = self.tokenize(s)
-        postfix = self.converPostfix(tokenized)
-        print(postfix)
-        return self.evalRPN(postfix)
-    
     def tokenize(self, s):
         s = s.replace(' ', '')
         s = '(' + s + ')'
@@ -54,13 +51,6 @@ class Solution:
                 result.append(char)
                 i += 1
             elif char == '-':
-                # if s[i-1] == '(' and s[i+1].isdigit():
-                #     j = i + 1
-                #     while j < len(s) and s[j].isdigit():
-                #         j += 1
-                #     result.append(s[i:j])
-                #     i = j
-                # else:
                     result.append('-')
                     i += 1
         
