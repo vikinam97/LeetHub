@@ -6,6 +6,9 @@
 #         self.right = right
 class Solution:
     def levelOrderBottom(self, root: Optional[TreeNode]) -> List[List[int]]:
+        # Solution - BFS + deque
+        # Time - O(N)
+        # Space - O(N)
         if not root:
             return []
         
