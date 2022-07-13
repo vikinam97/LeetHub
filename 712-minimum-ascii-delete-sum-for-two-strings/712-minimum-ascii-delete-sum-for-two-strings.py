@@ -1,5 +1,8 @@
 class Solution:
     def minimumDeleteSum(self, s1: str, s2: str) -> int:
+        # Solution - Accepted Bottom Up
+        # Time - O(M * N)
+        # Space - O(M * N)
         dp = []
         for i in range(len(s1)+1):
             dp.append([0] * (len(s2)+1))
@@ -19,22 +22,6 @@ class Solution:
         
         return dp[-1][-1]
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
 class Solution1:
     def minimumDeleteSum(self, s1: str, s2: str) -> int:
         # Solution - TLE bottom up recursion
