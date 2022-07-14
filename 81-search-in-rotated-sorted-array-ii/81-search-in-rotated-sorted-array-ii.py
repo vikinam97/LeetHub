@@ -1,10 +1,10 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> bool:
-        if len(nums)==1:
-            if nums[0]!=target:
-                return False
-            else:
-                return True
+        # if len(nums)==1:
+        #     if nums[0]!=target:
+        #         return False
+        #     else:
+        #         return True
 
         left=0
         right=len(nums)-1
