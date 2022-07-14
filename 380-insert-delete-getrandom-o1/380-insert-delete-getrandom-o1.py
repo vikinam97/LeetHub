@@ -1,23 +1,23 @@
 class RandomizedSet:
 
     def __init__(self):
-        self.hashMap = {}
+        self.hashMap = set()
         self.count = 0
 
     def insert(self, val: int) -> bool:
         if val not in self.hashMap:
-            self.hashMap[val] = True
+            self.hashMap.add(val)
             return True
         return False
     
     def remove(self, val: int) -> bool:
-        if self.hashMap.get(val, False) != False:
-            del self.hashMap[val]
+        if val in self.hashMap:
+            self.hashMap.remove(val)
             return True
         return False
     
     def getRandom(self) -> int:
-        keys = list(self.hashMap.keys())
+        keys = list(self.hashMap)
         # self.count += 1
         # return keys[self.count % len(keys)]
         return random.choice(keys)
