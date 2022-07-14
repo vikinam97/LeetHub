@@ -17,12 +17,12 @@ class Solution:
                 return True
             
             if nums[l] <= nums[mid]:
-                if nums[l] <= target <= nums[mid]:
+                if nums[l] <= target < nums[mid]:
                     r = mid - 1
                 else:
                     l = mid + 1
             else:
-                if nums[mid] <= target <= nums[r]:
+                if nums[mid] < target <= nums[r]:
                     l = mid + 1
                 else:
                     r = mid - 1
