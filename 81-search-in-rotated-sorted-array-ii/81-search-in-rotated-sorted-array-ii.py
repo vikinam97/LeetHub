@@ -1,45 +1,34 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> bool:
-        # if len(nums)==1:
-        #     if nums[0]!=target:
-        #         return False
-        #     else:
-        #         return True
 
-        left=0
-        right=len(nums)-1
-        # binary search 
-        while(left<=right):
-
-            # shifting to remove duplicate elements
-            while left<right and nums[left] == nums[left+1]:
-                left+=1
-            while left<right and nums[right] == nums[right-1]:
-                right-=1
-
-            # step 1 calculate the mid    
-            mid=(left+right)//2
-
-            #step 2
-            if nums[mid]==target:
+        l, r = 0, len(nums) - 1
+        
+        # for l == r on [1] arr
+        while l <= r:
+            while l < r and nums[l] == nums[l+1]:
+                l += 1
+            while r > l and nums[r] == nums[r-1]:
+                r -= 1
+            
+            mid = l + ((r - l) // 2)
+            
+            if nums[mid] == target:
                 return True
-
-            #step 3
-            elif nums[left]<=nums[mid]:
-                if nums[mid]>=target and nums[left]<=target:
-                    right=mid-1
+            
+            if nums[l] <= nums[mid]:
+                if nums[l] <= target < nums[mid]:
+                    r = mid - 1
                 else:
-                    left=mid+1
-
-            # step 4
+                    l = mid + 1
             else:
-                if target>=nums[mid] and target<=nums[right]:
-                    left=mid+1
+                if nums[mid] < target <= nums[r]:
+                    l = mid + 1
                 else:
-                    right=mid-1
-
-        # step 5
+                    r = mid - 1
+                    
         return False
+                
+            
                     
         
                 
