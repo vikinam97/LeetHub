@@ -5,6 +5,13 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        # Solution - using preorder and inorder properties
+        # Time - O(N^2)
+        # Space - O(N)
+        self.cur = 0
+        return self.helper(preorder, inorder)
+    
     def helper(self, preorder, inorder):
         if not inorder:
             return None
@@ -25,8 +32,3 @@ class Solution:
         node.right = self.helper(preorder, inorder[idx+1:])
         
         return node
-    
-    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-        self.cur = 0
-        
-        return self.helper(preorder, inorder)
