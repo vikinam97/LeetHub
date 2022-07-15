@@ -1,4 +1,16 @@
-class Solution:
+class Solution:        
+    def maximumDetonation(self, bombs: List[List[int]]) -> int:
+        # Solution - BFS - for every bomb
+        # Time - O(N^2)
+        # Space - O(N)
+        maxSoFar, maxi = 0, -1
+        for i in range(len(bombs)):
+            tmax = self.bfs(i, bombs)
+            if maxSoFar < tmax:
+                maxSoFar, maxi = tmax, i
+        
+        return maxSoFar
+        
     def bfs(self, cur, bombs):
         bfsList = [(bombs[cur], cur)]
         detonatedMap = { cur: True }
@@ -16,16 +28,4 @@ class Solution:
                         detonatedMap[id2] = True
             bfsList = nxt
         return count
-        
-        
-    def maximumDetonation(self, bombs: List[List[int]]) -> int:
-        maxSoFar, maxi = 0, -1
-        for i in range(len(bombs)):
-            tmax = self.bfs(i, bombs)
-            if maxSoFar < tmax:
-                maxSoFar, maxi = tmax, i
-        
-        return maxSoFar
-        
-            
             
