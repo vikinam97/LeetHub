@@ -18,7 +18,6 @@ class Solution:
         
         for i in range(len(grid)):
             for j in range(len(grid[0])):
-                # if grid[i][j] == 1:
                 count = self.dfs(i, j, grid)
                 longSoFar = max(longSoFar, count)
 
