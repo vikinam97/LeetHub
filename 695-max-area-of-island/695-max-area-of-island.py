@@ -15,7 +15,6 @@ class Solution:
     
     def dfs(self, x, y, grid):
         if x >= len(grid) or x < 0 or y >= len(grid[0]) or y < 0 or grid[x][y] != 1:
-        # if not (0 <= x < len(grid)) or not( 0 <= y < len(grid[0])) or grid[x][y] != 1:
             return 0
         
         di = [[0, 1], [0, -1], [1, 0], [-1, 0]]
