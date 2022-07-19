@@ -1,21 +1,13 @@
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
-        # Time O(N * 2)
-        # Space O(N ^ 2)
-        resultArr = []
-        resultArr.append([1])
+        ps = [[1]]
         
-        for row in range(1, numRows):
-            newRow = [0] * (row + 1)
-            resultArr.append(newRow)
+        for i in range(1, numRows):
+            row = [0] * (len(ps[-1]) + 1)
+            row[0], row[-1] = 1, 1
+            ps.append(row)
+            for j in range(1, len(row)-1):
+                ps[i][j] = ps[i-1][j] + ps[i-1][j-1]
+        
+        return ps
             
-            # init first and last as 1
-            newRow[0] = 1
-            newRow[row] = 1
-            
-            for col in range(1, row):
-                resultArr[row][col] = resultArr[row-1][col-1] + resultArr[row-1][col]
-                
-        # if to calculate nCr then return 
-        # resultArr[n][r]
-        return resultArr
