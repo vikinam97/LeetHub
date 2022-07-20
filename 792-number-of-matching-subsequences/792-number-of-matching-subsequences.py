@@ -12,25 +12,26 @@ class Solution:
                 result[(len(word)-1) - idx] = char
             return result
             
-        hashMap = defaultdict(list)
-        # for char in s:
-        #     hashMap[char] = []
+        hashMap = {}
+        for char in s:
+            hashMap[char] = []
         
         for word in words:
             temp = reverseToList(word)
-            # if temp[-1] in hashMap:
-            hashMap[temp[-1]].append(temp)
-            
+            if temp[-1] in hashMap:
+                hashMap[temp[-1]].append(temp)
+                
         count = 0
         for char in s:
             aWords = hashMap[char]
             hashMap[char] = []
+            
             for aWord in aWords:
                 aWord.pop()
                 if len(aWord) == 0:
                     count += 1
                     continue
-                # if aWord[-1] in hashMap:
-                hashMap[aWord[-1]].append(aWord)
+                if aWord[-1] in hashMap:
+                    hashMap[aWord[-1]].append(aWord)
         
         return count
