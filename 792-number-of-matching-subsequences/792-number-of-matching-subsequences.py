@@ -1,5 +1,7 @@
 class Solution:
     def numMatchingSubseq(self, s: str, words: List[str]) -> int:
+        # Solution - 
+        
         def reverseToList(word):
             result = [""] * len(word)
             for idx, char in enumerate(word):
