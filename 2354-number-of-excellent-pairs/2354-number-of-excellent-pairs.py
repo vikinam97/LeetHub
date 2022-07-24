@@ -6,21 +6,11 @@ class Solution:
             n = n & n-1
         return count
     
-    def binarySearch(self, arr, target):
-        l, r = 0, len(arr)-1
-        while l <= r:
-            mid = l + ((r - l) // 2)
-            
-            if arr[mid] == target:
-                return mid
-            if arr[mid] > target:
-                r = mid - 1
-            else: 
-                l = mid + 1
-                
-        return l
-    
     def countExcellentPairs(self, nums: List[int], k: int) -> int:
+        # Solution - bit logic
+        # Time - O(NlogN)
+        # Space - O(N)
+        
         nums = list(set(nums))
         count = 0
         
@@ -32,7 +22,7 @@ class Solution:
         for i in range(len(nums)):
             bitCount = nums[i]
             idx = bisect_left(nums, k - bitCount)
-            if idx >= 0:
-                count += len(nums) - idx
+            # if idx >= 0:
+            count += len(nums) - idx
                 
         return count
