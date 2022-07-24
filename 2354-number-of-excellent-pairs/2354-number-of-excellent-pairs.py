@@ -22,6 +22,7 @@ class Solution:
         for i in range(len(nums)):
             bitCount = nums[i]
             idx = bisect_left(nums, k - bitCount)
-            count += len(nums) - idx
+            if idx >= 0:
+                count += len(nums) - idx
                 
         return count
