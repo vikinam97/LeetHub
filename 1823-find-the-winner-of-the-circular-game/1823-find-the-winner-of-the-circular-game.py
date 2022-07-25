@@ -1,10 +1,25 @@
-class Node:
-    def __init__(self, val, next=None):
-        self.val = val
-        self.next = next
-        
 class Solution:
     def findTheWinner(self, n: int, k: int) -> int:
+        arr = [i for i in range(1, n+1)]
+        
+        cur = 0
+        while len(arr) > 1:
+            pos = (cur + (k -1)) % len(arr)
+            arr.pop(pos)
+            cur = pos
+        
+        return arr[0]
+
+
+
+
+        
+class Solution1:
+    def findTheWinner(self, n: int, k: int) -> int:
+        # Solution - Linked list simulation
+        # Time - O(N * K)
+        # Space - O(N)
+        
         head = Node("/")
         temp = head
         for i in range(1, n+1):
@@ -26,5 +41,8 @@ class Solution:
             count += 1
 
         return temp.val
-        
+class Node:
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next        
         
