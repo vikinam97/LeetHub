@@ -1,26 +1,21 @@
 class Solution:
-    def backtrack(self, pathSum, path, cand, tar, seen, seenPath):
+    def backtrack(self, pathSum, path, cand, tar):
         if pathSum > tar:
             return
         
         if pathSum == tar:
-            # pathStr = "".join([str(fre) for fre in seen])
-            # if pathStr not in seenPath:
             self.comboResult.append(path[:])
-                # seenPath[pathStr] = True
             return
         
         for idx, num in enumerate(cand):
             path.append(num)
-            seen[idx] += 1
-            self.backtrack(pathSum + num, path, cand[idx:], tar, seen, seenPath)
-            seen[idx] -= 1
+            self.backtrack(pathSum + num, path, cand[idx:], tar)
             path.pop()
     
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         self.comboResult = []
         candidates.sort()
-        self.backtrack(0, [], candidates, target, [0]*len(candidates), {})
+        self.backtrack(0, [], candidates, target)
         return self.comboResult
 
 # class Solution(object):
