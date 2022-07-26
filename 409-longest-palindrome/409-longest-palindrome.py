@@ -1,5 +1,9 @@
 class Solution:
     def longestPalindrome(self, s: str) -> int:
+        # Solution - hash map
+        # Time - O(N)
+        # Space - O(N)
+        
         hashMap = defaultdict(int)
         for i in range(len(s)):
             hashMap[s[i]] += 1
