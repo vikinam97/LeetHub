@@ -1,11 +1,21 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
 class Solution:
+    def traverse(self, node, p, q):
+        if not node:
+            return 0
+        
+        if node == p or node == q:
+            return node
+        
+        l = self.traverse(node.left, p, q)
+        r = self.traverse(node.right, p, q)
+        
+        return node if l and r else l or r
+        
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        return self.traverse(root, p, q)
+
+
+class Solution1:
     def traverse(self, node, p, q, curPath):
         if not node:
             return
@@ -18,6 +28,10 @@ class Solution:
         self.traverse(node.right, p, q, curPath + [node])
         
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        # Solution - in order traversal and common
+        # Time - O(N)
+        # Space - O(N)
+        
         self.paths = []
         self.traverse(root, p, q, [])
         path1 = self.paths[0]
@@ -32,5 +46,3 @@ class Solution:
                 return path2[i]
         
         return None
-            
-        
