@@ -11,6 +11,16 @@ class Solution:
             ['w', 'x', 'y', 'z'],
         ]
     
+    def letterCombinations(self, digits: str) -> List[str]:
+        # Solution - backtrack - permute
+        # Time - O(3^N)
+        #     N - no of digits
+        # Space - O(3^N)
+        
+        self.combo = []
+        self.recur(0, digits, [])
+        return self.combo
+        
     def recur(self, i, digits, path):
         if i >= len(digits):
             if len(path):
@@ -20,11 +30,4 @@ class Solution:
         for char in self.digiMap[int(digits[i])-1]:
             path.append(char)
             self.recur(i+1, digits, path)
-            path.pop()
-    
-    def letterCombinations(self, digits: str) -> List[str]:
-        self.combo = []
-        self.recur(0, digits, [])
-        return self.combo
-        
-        
+            path.pop()        
