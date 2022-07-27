@@ -4,30 +4,35 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution:
+
+
+
+class Solution:    
+    
     def dfs(self, node):
         if not node:
-            return
-
-        self.preorder.append(node)
-        self.dfs(node.left)
-        self.dfs(node.right)
+            return 
+        if not node.left and not node.right:
+            return node
+        
+        left = node.left
+        right = node.right
+        
+        lTree = self.dfs(node.left)
+        rTree = self.dfs(node.right)
+        
+          
+        if lTree:
+            lTree.right = right
+        node.left = None
+        node.right = left or right
+        
+        return rTree or lTree or node
     
     def flatten(self, root: Optional[TreeNode]) -> None:
-        if not root:
-            return []
-        self.preorder = []
+        
         self.dfs(root)
-        head = self.preorder[0]
-        for i in range(len(self.preorder)-1):
-            node = self.preorder[i]
-            node.left = None
-            node.right = self.preorder[i+1]
-        self.preorder[-1].right = None        
-        self.preorder[-1].left = None
         
-        return head
-
-        
+        return root
         
         
