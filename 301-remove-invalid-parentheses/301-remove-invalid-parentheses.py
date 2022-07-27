@@ -1,4 +1,16 @@
 class Solution:
+    def removeInvalidParentheses(self, s: str) -> List[str]:
+        # Solution - backtrack and only include valid backets 
+        # Time - O(2^N)
+        # Space - O(2^N)
+        
+        
+        leftRem, rightRem = self.getMinRemovals(s)
+        self.valids = set()
+        
+        self.backtrack(0, 0, 0, s, leftRem, rightRem, [])
+        
+        return self.valids
     def getMinRemovals(self, string):
         l, r = 0, 0
         i = 0
@@ -33,14 +45,4 @@ class Solution:
             self.backtrack(i+1, leftCount, rightCount+1, string, leftRem, rightRem, path)
         
         path.pop()
-        
-    
-    def removeInvalidParentheses(self, s: str) -> List[str]:
-        
-        leftRem, rightRem = self.getMinRemovals(s)
-        self.valids = set()
-        
-        self.backtrack(0, 0, 0, s, leftRem, rightRem, [])
-        
-        return self.valids
         
