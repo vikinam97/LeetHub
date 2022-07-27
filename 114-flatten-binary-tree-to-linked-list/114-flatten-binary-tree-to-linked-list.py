@@ -30,9 +30,11 @@ class Solution:
         return rTree or lTree or node
     
     def flatten(self, root: Optional[TreeNode]) -> None:
+        # Solution - traversal
+        # Time - O(N)
+        # Space - O(N)
         
         self.dfs(root)
-        
         return root
         
         
