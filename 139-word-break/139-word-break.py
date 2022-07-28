@@ -1,5 +1,30 @@
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        trie = {}
+
+        for word in wordDict:  # build the trie
+            node = trie
+            for ch in word: node = node.setdefault(ch, {})
+            node['#'] = True  # end of word
+
+        leads = [trie]
+        for i, ch in enumerate(s):
+            new_leads = []
+            trie_added = False  # to avoid duplicates
+            while leads:
+                lead = leads.pop()
+                if ch not in lead: continue
+                lead = lead[ch]
+                new_leads.append(lead)
+                if '#' in lead and not trie_added:  # we can start a new lead here as well
+                    new_leads.append(trie)
+                    trie_added = True
+            leads = new_leads
+
+        return trie in leads
+
+class Solution1:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         hashtable, dp = {i for i in wordDict}, [False] * (len(s) + 1)
         dp[0] = True
         for i in range(1, len(s) + 1):
