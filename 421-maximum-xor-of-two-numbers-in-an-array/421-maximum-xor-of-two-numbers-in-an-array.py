@@ -1,13 +1,5 @@
 class Solution:
     
-    def toBits(self, num):
-        arr = []
-        i = 31
-        while i >= 0:
-            arr.append(1 if num & (1 << i) else 0)
-            i -= 1
-        return arr
-    
     def addToTrie(self, num, trie):
         cur = trie
         i = 31
@@ -30,7 +22,6 @@ class Solution:
                 val = val | (1 << i)
             else:
                 trie = trie[key]
-                
             i -= 1
         return val
     
@@ -40,10 +31,8 @@ class Solution:
         maxSoFar = 0
         for num in nums:
             self.addToTrie(num, self.trie)
-
             maxVal = self.maximize(num, self.trie)
             maxSoFar = max(maxSoFar, maxVal)
-        
         return maxSoFar
             
         
