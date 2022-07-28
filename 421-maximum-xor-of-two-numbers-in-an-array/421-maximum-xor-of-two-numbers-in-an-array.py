@@ -1,5 +1,19 @@
 class Solution:
     
+    def findMaximumXOR(self, nums: List[int]) -> int:
+        # Solution - trie  + bit logic
+        # Time - O(N * 32)
+        # Space - O(N * 32)
+        
+        self.end = '*'
+        self.trie = {}
+        maxSoFar = 0
+        for num in nums:
+            self.addToTrie(num, self.trie)
+            maxVal = self.maximize(num, self.trie)
+            maxSoFar = max(maxSoFar, maxVal)
+        return maxSoFar
+    
     def addToTrie(self, num, trie):
         cur = trie
         i = 31
@@ -24,16 +38,6 @@ class Solution:
                 trie = trie[key]
             i -= 1
         return val
-    
-    def findMaximumXOR(self, nums: List[int]) -> int:
-        self.end = '*'
-        self.trie = {}
-        maxSoFar = 0
-        for num in nums:
-            self.addToTrie(num, self.trie)
-            maxVal = self.maximize(num, self.trie)
-            maxSoFar = max(maxSoFar, maxVal)
-        return maxSoFar
             
         
         
