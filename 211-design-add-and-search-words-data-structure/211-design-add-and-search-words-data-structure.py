@@ -1,10 +1,13 @@
 class WordDictionary:
 
     def __init__(self):
+        # Solution - Trie
+        # Space - O(N)
         self.trie = {}
         self.end = "*"
         
     def addWord(self, word: str) -> None:
+        # Time - O(N)
         cur = self.trie
         for char in word:
             if char not in cur:
@@ -12,8 +15,12 @@ class WordDictionary:
             cur = cur[char]
         cur[self.end] = True
         
+    def search(self, word: str) -> bool:
+        # Time - O(N * M) 
+            # - worst case .... traverse all chars
+        return self.dfs(0, word, self.trie)
+    
     def dfs(self, i, word, trie):
-        # print(word[i], list(trie.keys()))
         if i >= len(word):
             return self.end in trie
         
@@ -28,11 +35,6 @@ class WordDictionary:
             return self.dfs(i + 1, word, trie[word[i]])
         
         return False
-            
-
-    def search(self, word: str) -> bool:
-        # print("--------------------")
-        return self.dfs(0, word, self.trie)
 
 
 # Your WordDictionary object will be instantiated and called as such:
