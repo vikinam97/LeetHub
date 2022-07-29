@@ -20,5 +20,4 @@ class Solution:
             if patternCode == self.colorCode(words[i]):
                 result.append(words[i])
         
-        print(patternCode)
         return result
