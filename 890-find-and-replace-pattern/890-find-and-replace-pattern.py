@@ -12,6 +12,12 @@ class Solution:
         return "#".join(code)
     
     def findAndReplacePattern(self, words: List[str], pattern: str) -> List[str]:
+        # Solution - color code
+        # Time - O(N*M)
+        #      - N = no of words
+        #      - M = length of word
+        # Space - O(M)
+        
         patternCode = self.colorCode(pattern)
         
         result = []
