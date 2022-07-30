@@ -30,6 +30,10 @@ class Solution:
         return False
     
     def solveSudoku(self, board: List[List[str]]) -> None:
+        # Solution - hash + backtracking
+        # Time - O(9 ^ (9*9))
+        # Space - O(9*9)
+        
         rowSet, colSet, subSet = [0] * 9, [0] * 9, defaultdict(set)
         
         fillList = []
