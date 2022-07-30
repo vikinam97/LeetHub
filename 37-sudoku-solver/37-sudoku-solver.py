@@ -1,7 +1,7 @@
 class Solution:
     
     def solve(self, x, board, fillList, rowSet, colSet, subSet):
-        # print(x, board)
+
         if x >= len(fillList):
             return True
         
@@ -30,17 +30,7 @@ class Solution:
         return False
     
     def solveSudoku(self, board: List[List[str]]) -> None:
-        rowSet, colSet, subSet = [0] * 9, [0] * 9, {
-            (0, 0): set(),
-            (0, 1): set(),
-            (0, 2): set(),
-            (1, 0): set(),
-            (1, 1): set(),
-            (1, 1): set(),
-            (2, 0): set(),
-            (2, 1): set(),
-            (2, 2): set(),
-        }
+        rowSet, colSet, subSet = [0] * 9, [0] * 9, defaultdict(set)
         
         fillList = []
 
