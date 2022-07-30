@@ -15,6 +15,8 @@ class Solution:
     def wordSubsets(self, words1: List[str], words2: List[str]) -> List[str]:
         # Solution - Hash Table
         # Time - O(N * M * 26)
+        #   - N = len of max(A, B)
+        #   - M = 10
         # Space - O(26)
         
         reqHash = [0] * 26
