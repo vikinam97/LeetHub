@@ -62,9 +62,6 @@ class Solution:
                     subSet[(i // 3, j // 3)] = set()
                 subSet[(i // 3, j // 3)].add(board[i][j])
                 
-        # print(rowSet, colSet, subSet)
-        # print(fillList)
-        
         self.solve(0, board, fillList, rowSet, colSet, subSet)
 
                 
