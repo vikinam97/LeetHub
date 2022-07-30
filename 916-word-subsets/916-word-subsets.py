@@ -13,6 +13,10 @@ class Solution:
         
     
     def wordSubsets(self, words1: List[str], words2: List[str]) -> List[str]:
+        # Solution - Hash Table
+        # Time - O(N * M * 26)
+        # Space - O(26)
+        
         reqHash = [0] * 26
         for word in words2:
             wHash = [0] * 26
@@ -20,6 +24,7 @@ class Solution:
                 key = ord(char) - ord('a')
                 wHash[key] += 1
                 reqHash[key] = max(wHash[key], reqHash[key])
+                
         result = []
         
         for word in words1:
