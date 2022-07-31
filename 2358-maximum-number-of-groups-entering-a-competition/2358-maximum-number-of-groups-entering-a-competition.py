@@ -4,10 +4,6 @@ class Solution:
         # Time - O(N)
         # Space - O(1)
         
-               # Solution - greedy sort and pick from sorted array
-        # Time - O(N)
-        # Space - O(1)
-        
         grades.sort()
         
         curSum, curTotal = 0, 0
