@@ -1,5 +1,9 @@
 class Solution:
     def longestCycle(self, edges: List[int]) -> int:
+        # Solution - cycle detection - single path
+        # Time - O(N)
+        # Space - O(N)
+        
         visited = {}
         maxSoFar = float('-inf')
         seenPath = []
