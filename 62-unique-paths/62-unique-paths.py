@@ -1,6 +1,28 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        # Solution - dynamic programming | memoization
+        # Solution - dynamic programming | Tabulation | Space Optimized
+        # Time - O(M * N)
+        # Space - O(N)
+        
+        pdp = [0]*n
+        
+        for j in range(n):
+            pdp[j] = 1
+        
+        for i in range(1, m):
+            cdp = [0] * n
+            cdp[0] = 1
+            
+            for j in range(1, n):
+                cdp[j] = cdp[j-1] + pdp[j]
+            
+            pdp = cdp
+            
+        return pdp[-1]
+
+class Solution1:
+    def uniquePaths(self, m: int, n: int) -> int:
+        # Solution - dynamic programming | Tabulation
         # Time - O(M * N)
         # Space - O(M * N)
         
@@ -17,7 +39,7 @@ class Solution:
         
         return dp[-1][-1]
 
-class Solution:
+class Solution1:
     def uniquePaths(self, m: int, n: int) -> int:
         # Solution - dynamic programming | memoization
         # Time - O(M * N)
