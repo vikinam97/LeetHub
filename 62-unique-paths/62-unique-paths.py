@@ -1,5 +1,5 @@
 class Solution:
-    @cache
+    
     def recur(self, i, j, m, n):
         if i > m or j > n:
             return 0
@@ -7,9 +7,13 @@ class Solution:
         if i == (m-1) and j == (n-1):
             return 1
         
-        return self.recur(i, j+1, m, n) + self.recur(i+1, j, m, n)
+        if (i, j) in self.memo:
+            return self.memo[(i, j)]
+        
+        self.memo[(i, j)] = self.recur(i, j+1, m, n) + self.recur(i+1, j, m, n)
+        return self.memo[(i, j)]
     
     def uniquePaths(self, m: int, n: int) -> int:
-        
+        self.memo = {}
         return self.recur(0, 0, m, n)
         
