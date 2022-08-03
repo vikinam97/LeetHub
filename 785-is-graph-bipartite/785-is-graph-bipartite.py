@@ -9,7 +9,6 @@ class Solution:
         
         while bfs:
             nxt = []
-            # print(bfs)
             for i, color in bfs:
                 if i in nodeColors:
                     if nodeColors[i] != color:
@@ -23,10 +22,8 @@ class Solution:
     
     def isBipartite(self, graph: List[List[int]]) -> bool:
         nodeColors = {}
-        
         for i in range(len(graph)):
             if not self.bfs(i, nodeColors, set(), graph):
                 return False
-            
         return True
         
