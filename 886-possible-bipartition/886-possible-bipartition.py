@@ -10,7 +10,6 @@ class Solution:
             adjMat[a-1].append(b-1)
             adjMat[b-1].append(a-1)
         
-        # print(adjMat)
         return self.isBipartite(adjMat)
         
     def isBipartite(self, graph):
@@ -29,7 +28,6 @@ class Solution:
             return True
         bfs = [(cur, 'A')]
         while bfs:
-            # print(bfs)
             nxt = []
             for i, color in bfs:
                 if i in nodeColors:
@@ -39,7 +37,5 @@ class Solution:
                     nodeColors[i] = color
                     for child in graph[i]:
                         nxt.append((child, 'B' if color == 'A' else 'A'))
-            # print(nxt)
-            # print("---")
             bfs = nxt
         return True
