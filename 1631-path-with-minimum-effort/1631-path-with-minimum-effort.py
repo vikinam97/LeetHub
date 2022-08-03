@@ -1,6 +1,8 @@
 class Solution:
-    
     def checkPossible(self, i, j, prev, heights, k, visited):
+        if i < 0 or i >= len(heights) or j < 0 or j >= len(heights[0]):
+            return False
+        
         if i == len(heights)-1 and j == len(heights[0])-1:
             return abs(heights[i][j] - prev) <= k
         
@@ -15,9 +17,8 @@ class Solution:
         
         for di, dj in dirMat:
             x, y = i + di, j + dj
-            if 0 <= x < len(heights) and 0 <= y < len(heights[0]):
-                if self.checkPossible(x, y, heights[i][j], heights, k, visited):
-                    return True
+            if self.checkPossible(x, y, heights[i][j], heights, k, visited):
+                return True
             
         return False
     
