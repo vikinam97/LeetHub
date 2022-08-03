@@ -19,8 +19,6 @@ class Solution:
                 if self.checkPossible(x, y, heights[i][j], heights, k, visited):
                     return True
             
-        # del visited[(i, j)]
-        
         return False
     
     def minimumEffortPath(self, heights: List[List[int]]) -> int:
