@@ -23,6 +23,10 @@ class Solution:
         return False
     
     def minimumEffortPath(self, heights: List[List[int]]) -> int:
+        # Solution - DFS + Binary Search
+        # Time - O(M*N*log(Max))
+        # Space - O(M*N)
+        
         maxSoFar = float('-inf')
         for i in range(len(heights)):
             for j in range(len(heights[0])):
