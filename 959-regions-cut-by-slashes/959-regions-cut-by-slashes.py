@@ -1,6 +1,4 @@
 class Solution:
-    
-
     def regionsBySlashes(self, grid):
         n, dict1 = len(grid), {}
 
@@ -29,6 +27,5 @@ class Solution:
                 if grid[i][j] != "\\":
                     union((i,j,0), (i,j,3))
                     union((i,j,1), (i,j,2))
-
 
         return len({find(i) for i in dict1})
