@@ -1,5 +1,9 @@
 class Solution:
     def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:
+        # Solution - Floyd Warshal
+        # Time - O(V^3)
+        # Space - O(V^2)
+        
         grid = [[float('inf')] * n for i in range(n)]
         
         for i in range(n):
@@ -9,7 +13,6 @@ class Solution:
             grid[a][b] = grid[b][a] = wt
             
         for pivot in range(n):
-            
             for i in range(n):
                 for j in range(n):
                     if i == pivot or j == pivot or i == j:
