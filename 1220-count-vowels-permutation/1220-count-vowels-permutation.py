@@ -11,6 +11,40 @@ class Solution:
     }
 
     def countVowelPermutation(self, n: int) -> int:
+        # Solution - DP iterative
+        # Time - O(N*5)
+        # Space - O(N*5)
+        
+        pdp = [1] * 5
+            
+        for i in range(1, n):
+            cdp = [0] * 5
+            for j in range(5):
+                for ni in self.adj[j]:
+                    cdp[j] = (cdp[j] % self.MOD + pdp[ni] % self.MOD) % self.MOD
+            pdp = cdp
+        p = 0
+        for val in pdp:
+            p = (p + val % self.MOD) % self.MOD
+
+        return p
+
+class Solution1:
+    
+    MOD = (10 ** 9) + 7
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    adj = {
+        0: [1], 
+        1: [0, 2], 
+        2: [0, 1, 3, 4],
+        3: [2, 4], 
+        4: [0]
+    }
+
+    def countVowelPermutation(self, n: int) -> int:
+        # Solution - DP iterative
+        # Time - O(N*5)
+        # Space - O(N*5)
         
         dp = [[0] * 5 for i in range(n)]
         for i in range(5):
@@ -21,10 +55,8 @@ class Solution:
                 for ni in self.adj[j]:
                     dp[i][j] = dp[i][j] + dp[i-1][ni]
         
-        # print(dp[-1])
         p = 0
         for val in dp[-1]:
-            # print(val)
             p = (p + val % self.MOD) % self.MOD
 
         return p
