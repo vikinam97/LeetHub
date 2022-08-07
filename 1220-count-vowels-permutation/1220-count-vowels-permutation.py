@@ -21,8 +21,9 @@ class Solution:
             cdp = [0] * 5
             for j in range(5):
                 for ni in self.adj[j]:
-                    cdp[j] = (cdp[j] % self.MOD + pdp[ni] % self.MOD) % self.MOD
+                    cdp[j] = (cdp[j]  + pdp[ni] % self.MOD) % self.MOD
             pdp = cdp
+            
         p = 0
         for val in pdp:
             p = (p + val % self.MOD) % self.MOD
