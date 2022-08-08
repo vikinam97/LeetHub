@@ -5,7 +5,8 @@ class DSUF:
     def find(self, node):
         if self.arr[node] == -1:
             return node
-        return self.find(self.arr[node])
+        self.arr[node] = self.find(self.arr[node])
+        return self.arr[node]
     
     def union(self, a, b):
         aP = self.find(a)
@@ -32,23 +33,6 @@ class Solution:
                     dSet.union(i, j)
         
         return dSet.countParent()
-                
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 class Solution1:
     
