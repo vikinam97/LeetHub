@@ -1,5 +1,8 @@
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
+        # Solution - LIS
+        # Time - O(N^2)
+        # Space - O(N)
         dp = [1] * len(nums)
 
         maxSoFar = 1
