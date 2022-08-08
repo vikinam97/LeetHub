@@ -23,6 +23,10 @@ class DSUF:
 
 class Solution:
     def maxNumEdgesToRemove(self, n: int, edges: List[List[int]]) -> int:
+        # Solution - DSU
+        # Time - O(ElogV)
+        # Space - O(V)
+        
         aliceSet = DSUF(n)
         bobSet = DSUF(n)
         
@@ -57,18 +61,3 @@ class Solution:
             return len(edges) - usedEdgeCount
         
         return -1
-            
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
