@@ -2,6 +2,7 @@ class Solution:
     def minTrioDegree(self, n: int, edges: List[List[int]]) -> int:
         adjMat = defaultdict(set)
         degree = [0] * (n+1)
+        
         for u, v in edges:
             degree[u] += 1
             degree[v] += 1
