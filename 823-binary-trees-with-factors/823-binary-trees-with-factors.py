@@ -1,6 +1,6 @@
 MOD = (10 ** 9) + 7
 
-class Solution:
+class Solution1:
     def numFactoredBinaryTrees(self, arr: List[int]) -> int:
         # Solution - DP Iterative
         # Time - O(N * N)
@@ -19,7 +19,7 @@ class Solution:
         
         return sm
 
-class Solution1:
+class Solution:
     def numFactoredBinaryTrees(self, arr: List[int]) -> int:
         # Solution - recursion + memo
         # Time - O(N * N)
@@ -41,8 +41,8 @@ class Solution1:
         for i in arr:
             if (parent / i) in hashSet:
                 sm = ( sm +
-                    ((self.recur(i, arr, hashSet) + 1) % MOD) * 
-                    ((self.recur(parent / i, arr, hashSet) + 1) % MOD)) % MOD
+                    ((self.recur(i, arr, hashSet) + 1) ) * 
+                    ((self.recur(parent / i, arr, hashSet) + 1) )) % MOD
         self.memo[parent] = sm
         return sm
     
