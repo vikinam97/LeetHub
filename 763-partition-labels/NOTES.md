@@ -1,3 +1,4 @@
+```
 class Solution:
 def partitionLabels(self, s: str) -> List[int]:
 # Solution - Greedy
@@ -22,3 +23,4 @@ seenChar = set()
 result.append(i - j)
 j = i
 return result
+```
