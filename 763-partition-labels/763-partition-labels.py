@@ -1,5 +1,10 @@
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
+        # Solution - Greedy
+        # Time - O(N)
+        #     - N -> length of string
+        # Space - O(N)
+        
         lastSeen = defaultdict(int)
         for i in range(len(s)):
             lastSeen[s[i]] = i
