@@ -11,7 +11,7 @@ class Solution:
             dp[i] = 1
             for j in arr:
                 if i / j in hashSet:
-                    dp[i] = (dp[i] + ((dp[j]) * (dp[i / j]))) % MOD
+                    dp[i] = (dp[i] + (dp[j] * dp[i / j])) % MOD
             sm = (sm + dp[i]) % MOD
         
         return sm
