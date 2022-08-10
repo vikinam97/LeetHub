@@ -20,6 +20,10 @@ class Solution:
         return node
     
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+        # Solution - greedy
+        # Time - O(N)
+        # Space - O(logN)
+        
         return self.recur(nums)
         
         
