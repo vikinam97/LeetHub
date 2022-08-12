@@ -11,13 +11,13 @@ class Solution:
         if not node: 
             return
         
-        if node == p or node == q:
+        if (p.val <= node.val <= q.val) or (q.val <= node.val <= p.val):
             return node
         
         l = self.dfs(node.left, p, q)
         r = self.dfs(node.right, p, q)
         
-        return node if l and r else l or r
+        return l or r
     
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         return self.dfs(root, p, q)
