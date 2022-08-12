@@ -12,6 +12,10 @@ class Solution:
         return node if l and r else l or r
         
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        # Solution - traversal | meeting node
+        # Time - O(N)
+        # Space - O(N)
+        
         return self.traverse(root, p, q)
 
 
