@@ -1,5 +1,9 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
+        # Solution - buy at valley and sell at peak
+        # Time - O(N)
+        # Space - O(1)
+        
         profit = 0
         i = 0
         while i < len(prices):
