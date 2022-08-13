@@ -18,7 +18,8 @@ class Solution:
                     if seen[w] > count[w]:
                         break
                 else:
-                    break    
+                    break
+                
             if seen == count:
                 res.append(i)
             i = i + 1
