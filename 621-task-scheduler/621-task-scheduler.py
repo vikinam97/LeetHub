@@ -1,5 +1,10 @@
 class Solution:
     def leastInterval(self, tasks: List[str], n: int) -> int:
+        # Solution - greedy - rearrage distant apart technique
+        # Time - O(NlogN)
+        # Space - O(26) -> O(1)
+        
+        
         taskFreq = Counter(tasks)
         heap = [(-1*taskFreq[task], task) for task in taskFreq]
         heapq.heapify(heap)
