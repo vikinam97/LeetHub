@@ -18,20 +18,23 @@ class Solution:
     def maxEvents(self, events: List[List[int]]) -> int:
         events.sort()
         heap = []
-        n = max(events, key=lambda x: x[1])[1]
+        lastDay = max(events, key=lambda x: x[1])[1]
         
-        cnt = 0
         i = 0
-        for day in range(1, n+1):
-            while i < len(events) and events[i][0] == day:
-                heappush(heap, events[i][1])
+        attended = 0
+        for curDay in range(1, lastDay + 1):
+            
+            while i < len(events) and events[i][0] == curDay:
+                heapq.heappush(heap, events[i][1])
                 i += 1
-
-            while heap and heap[0] < day:
-                heappop(heap)
-
+            
+            while heap and heap[0] < curDay:
+                heapq.heappop(heap)
+            
             if heap:
-                curr = heappop(heap)
-                cnt += 1
-
-        return cnt
+                heapq.heappop(heap)
+                attended += 1
+        
+        return attended
+            
+            
