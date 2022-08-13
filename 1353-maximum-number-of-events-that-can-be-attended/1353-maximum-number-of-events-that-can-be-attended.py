@@ -25,7 +25,6 @@ class Solution:
         
         return attended
 
-
 class Solution1:
     # TLE - attend event on last possible date of event
     # Time - O(NlogN) + O(N*(S-E))
