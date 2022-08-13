@@ -1,32 +1,25 @@
 class Solution:
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
-        self.s = s
-        self.size = len(s)
-        self.wl = len(words[0])
-        span = len(words)*self.wl
-        self.count = Counter(words)
-        self.ans = []
-        for i in range(min(self.wl, self.size-span+1)):
-            self.match(i, i)
-        return self.ans  
-
-    def match(self, i, j):
-        cur = deepcopy(self.count)
-        while j + self.wl <= self.size:
-            w = self.s[j:j+self.wl]
-            if w in cur:
-                cur[w] -= 1
-                if cur[w] == 0:
-                    del cur[w]
-                if not cur:
-                    self.ans += i,
-                    cur[self.s[i:i+self.wl]] += 1
-                    i += self.wl
-                j += self.wl
-            else:
-                if i < j:
-                    cur[self.s[i:i+self.wl]] += 1
-                    i += self.wl
+        n, num_words = len(s), len(words)
+        if n == 0 or num_words == 0:
+            return []
+        count = collections.Counter(words)
+        word_len = len(words[0])
+        total_len = num_words * word_len
+        res = []
+        i = 0
+        while i <= n - total_len:
+            # determine whether s[i:i+total_len] is valid
+            seen = collections.defaultdict(int)
+            for j in range(i, i + total_len, word_len):
+                w = s[j:j + word_len]
+                if w in count:
+                    seen[w] += 1
+                    if seen[w] > count[w]:
+                        break
                 else:
-                    j += self.wl
-                    i += self.wl
+                    break    
+            if seen == count:
+                res.append(i)
+            i = i + 1
+        return res
