@@ -1,26 +1,3 @@
-class Solution:
-    def lengthOfLIS(self, nums: List[int]) -> int:
-        memo = {}
-        N = len(nums)
-        
-        def rec(i):
-            if i == N:
-                return 0
-            if i in memo:
-                return memo[i]
-            SUM = 0
-            for j in range(i+1,N):
-                if nums[j] > nums[i]:
-                    SUM = max(SUM,1+rec(j))
-            memo[i] = SUM
-            return SUM
-        
-        #invoke for all elemnts in nums
-        ans = 0
-        for i in range(N):
-            ans = max(ans,1+rec(i))
-        return ans
-
 class Solution1:
     
     def recur(self, i, prev, nums):
@@ -66,7 +43,7 @@ class Solution1:
         
         
 
-class Solution1:
+class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         # Solution - LIS
         # Time - O(N^2)
