@@ -12,9 +12,7 @@ class Solution:
         stack = []
         for i in range(len(s)):
             val = valMap[s[i]]
-            if not stack:
-                stack.append(val)
-            elif stack[-1] >= val:
+            if not stack or stack[-1] >= val:
                 stack.append(val)
             else:
                 pVal = stack.pop()
