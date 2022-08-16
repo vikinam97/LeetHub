@@ -1,4 +1,11 @@
 class Solution:
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+        # Solution - recursion memoization
+        # Time - O(N*2)
+        # Space - O(N*2)
+        
+        self.memo = {}
+        return self.recur(0, 0, nums, target)
     
     def recur(self, i, curSum, nums, target):
         if i >= len(nums):
@@ -11,7 +18,4 @@ class Solution:
                 self.recur(i+1, curSum - nums[i], nums, target))
     
         return self.memo[(i, curSum)]
-    def findTargetSumWays(self, nums: List[int], target: int) -> int:
-        self.memo = {}
-        return self.recur(0, 0, nums, target)
         
