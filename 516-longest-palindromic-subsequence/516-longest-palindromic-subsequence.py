@@ -1,4 +1,4 @@
-class Solution1:    
+class Solution:    
     def longestPalindromeSubseq(self, s: str) -> int:
         # Solution - recursion with memorization
         # Time - O(N^2)
@@ -18,7 +18,7 @@ class Solution1:
         
         return dp[-1][-1]
     
-class Solution:    
+class Solution1:    
     def longestPalindromeSubseq(self, s: str) -> int:
         # Solution - recursion with memorization
         # Time - O(N^2)
