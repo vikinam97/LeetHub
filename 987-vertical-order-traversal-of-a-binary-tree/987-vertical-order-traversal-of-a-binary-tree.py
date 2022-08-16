@@ -5,6 +5,23 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+        
+    def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
+        # Solution - dequeue and DFS
+        # Time - O(NlogN)
+        # Space - O(N)
+        self.order = collections.deque([{}])
+        self.min = 0
+        self.max = 0
+        self.dfs(root, 0, 0)
+        result = []
+        for lvls in self.order:
+            temp = []
+            for k in sorted(lvls.keys()):
+                temp += sorted(lvls[k])
+            result.append(temp)
+
+        return result
     
     def dfs(self, node, x, dep):
         if not node:
@@ -29,21 +46,3 @@ class Solution:
         
         self.dfs(node.left, x - 1, dep + 1)
         self.dfs(node.right, x + 1, dep + 1)
-    
-    def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
-        self.order = collections.deque([{}])
-        self.min = 0
-        self.max = 0
-        self.dfs(root, 0, 0)
-        # print(self.order)
-        result = []
-        for lvls in self.order:
-            # print("-------")
-            # print(sorted(lvls.keys()))
-            # print("-------")
-            temp = []
-            for k in sorted(lvls.keys()):
-                temp += sorted(lvls[k])
-            result.append(temp)
-
-        return result
