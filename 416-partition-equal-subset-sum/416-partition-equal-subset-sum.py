@@ -1,5 +1,18 @@
-class Solution:
-
+class Solution:            
+    def canPartition(self, nums: List[int]) -> bool:
+        # Solution - Recusion + Memoization
+        # Time - O(N*N)
+        #     - N = len(nums)
+        # Space - O(N)
+        
+        self.memo = {}
+        
+        target = sum(nums)/2
+        if target != int(target):
+            return False
+        
+        return self.recur(0, 0, int(target), nums)
+    
     def recur(self, idx, i, target, nums):
         if idx >= len(nums):
             return i == target
@@ -11,14 +24,4 @@ class Solution:
                               self.recur(idx+1, i, target, nums))
         
         return self.memo[(idx, i)]
-            
-    def canPartition(self, nums: List[int]) -> bool:
-        self.memo = {}
-        
-        target = sum(nums)/2
-        
-        if target != int(target):
-            return False
-        
-        return self.recur(0, 0, int(target), nums)
         
