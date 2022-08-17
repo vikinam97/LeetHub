@@ -23,6 +23,3 @@ class Solution:
             self.expandPalindrome(i, j, s)
         
         return s[self.imax:self.jmax+1]
-            
-            
-                
