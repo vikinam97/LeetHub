@@ -2,7 +2,7 @@ class Solution:
     def findLength(self, nums1: List[int], nums2: List[int]) -> int:
         # Solution - Longest common sub string
         # Time - O(N*M)
-        # Space - O(N*M)
+        # Space - O(M)
         
         pdp = [0] * (len(nums2)+1)
         
