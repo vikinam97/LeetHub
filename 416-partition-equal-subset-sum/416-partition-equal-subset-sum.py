@@ -11,6 +11,38 @@ class Solution:
             return False
         
         target = int(target)
+        pdp = [False] * (target+1)
+        
+        if nums[0] <= target: pdp[nums[0]] = True
+        
+        for i in range(1, len(nums)):
+            cdp = [False] * (target+1)
+            cdp[0] = True
+            
+            for j in range(1, target+1):
+                dontTake = pdp[j]
+                take = False
+                if nums[i] <= j:
+                    take = pdp[j - nums[i]]
+                cdp[j] = take | dontTake
+            
+            pdp = cdp
+            
+        return pdp[-1]
+
+class Solution1:            
+    def canPartition(self, nums: List[int]) -> bool:
+        # Solution - DP Tabulation
+        # Time - O(N * S)
+        #      - N = len(nums)
+        #      - S = sum(nums) / 2
+        # Space - O(N * S)
+        
+        target = sum(nums)/2
+        if target != int(target):
+            return False
+        
+        target = int(target)
         dp = [[False] * (target+1) for _ in range(len(nums))]
         
         for i in range(len(nums)): dp[i][0] = True
@@ -30,9 +62,10 @@ class Solution:
 class Solution1:            
     def canPartition(self, nums: List[int]) -> bool:
         # Solution - Recusion + Memoization
-        # Time - O(N*N)
-        #     - N = len(nums)
-        # Space - O(N)
+        # Time - O(N * S)
+        #      - N = len(nums)
+        #      - S = sum(nums) / 2
+        # Space - O(N * S)
         
         self.memo = {}
         
