@@ -17,6 +17,9 @@ class Solution:
         if idx >= len(nums):
             return i == target
         
+        if i > target:
+            return False
+        
         if (idx, i) in self.memo:
             return self.memo[(idx, i)]
         
