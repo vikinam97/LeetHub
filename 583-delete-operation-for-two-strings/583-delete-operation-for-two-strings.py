@@ -1,7 +1,7 @@
 class Solution:
     def minDistance(self, word1: str, word2: str) -> int:
         
-        # Solution - dynamic programming
+        # Solution - LCS
         # Time = O(N * M) N = len(word1), M = len(word2)
         # Space = O(N * M) N = len(word1), M = len(word2)
         
