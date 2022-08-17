@@ -1,20 +1,25 @@
 class Solution:
     def findMaxForm(self, strs: List[str], m: int, n: int) -> int:
+        # Solution - 0/1 knapsack
+        # Time - O(N * N)
+        # Space - O(N * N)
+        
         countDigits = []
         self.memo = {}
-        def get01Count(word):
-            counts = [0, 0]
-            for i in word:
-                if i == '1':
-                    counts[1] += 1
-                else:
-                    counts[0] += 1
-            return counts
         
         for i in range(len(strs)):
-            countDigits.append(get01Count(strs[i]))
+            countDigits.append(self.get01Count(strs[i]))
         
         return self.recur(0, m, n, countDigits)-1
+    
+    def get01Count(self, word):
+        counts = [0, 0]
+        for i in word:
+            if i == '1':
+                counts[1] += 1
+            else:
+                counts[0] += 1
+        return counts
     
     def recur(self, idx, m, n, countDigits):
         if (idx, m, n) in self.memo:
