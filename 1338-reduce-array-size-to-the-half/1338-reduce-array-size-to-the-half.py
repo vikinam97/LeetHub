@@ -1,5 +1,9 @@
 class Solution:
     def minSetSize(self, arr: List[int]) -> int:
+        # Solution - Greedy - choosing max freq element first
+        # Time - O(NlogN)
+        # Space - (N)
+        
         freqSet = defaultdict(int)
         heap = []
         for num in arr:
