@@ -4,10 +4,8 @@ class Solution:
         # Time - O(NlogN)
         # Space - (N)
         
-        freqSet = defaultdict(int)
+        freqSet = Counter(arr)
         heap = []
-        for num in arr:
-            freqSet[num] += 1
         
         for num in freqSet:
             heap.append(-1 * freqSet[num])
@@ -15,7 +13,6 @@ class Solution:
         heapq.heapify(heap)
         
         count, size = 0, 0
-        
         while heap and size < (len(arr) // 2):
             size += -1 * heapq.heappop(heap)
             count += 1
