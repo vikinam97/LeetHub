@@ -1,5 +1,9 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
+        # Solution - kadane`s algo
+        # Time - O(N)
+        # Space - O(1)
+        
         currentMax = 0;
         result = nums[0]
         for i in nums:
