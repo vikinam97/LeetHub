@@ -9,12 +9,12 @@ class Solution:
             return self.memo[(i, j)]
         
         if i == h-1 and j == w-1:
-            return dungeon[i][j] if dungeon[i][j] < 0 else 0 
+            return min(dungeon[i][j], 0) 
         
         cost = max(self.recur(i + 1, j, dungeon),
                   self.recur(i, j + 1, dungeon)) + dungeon[i][j]
         
-        self.memo[(i, j)] = cost if cost < 0 else 0
+        self.memo[(i, j)] = min(cost, 0)
         
         return self.memo[(i, j)]
     
