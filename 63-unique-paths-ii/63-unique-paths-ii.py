@@ -1,8 +1,8 @@
 class Solution:
     def uniquePathsWithObstacles(self, grid: List[List[int]]) -> int:
-        # Solution - DP Tabulation
+        # Solution - Space Optimized DP
         # Time - O(N*M)
-        # Space - O(N*M)
+        # Space - O(M)
         
         h, w = len(grid), len(grid[0])
         
