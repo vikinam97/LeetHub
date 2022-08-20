@@ -1,16 +1,27 @@
-class Solution(object):
-    def minRefuelStops(self, target, tank, stations):
-        pq = []  # A maxheap is simulated using negative values
-        stations.append((target, float('inf')))
-
-        ans = prev = 0
-        for location, capacity in stations:
-            tank -= location - prev
-            while pq and tank < 0:  # must refuel in past
-                tank += -heapq.heappop(pq)
-                ans += 1
-            if tank < 0: return -1
-            heapq.heappush(pq, -capacity)
-            prev = location
-
-        return ans
+class Solution:
+    def minRefuelStops(self, target: int, startFuel: int, stations: List[List[int]]) -> int:
+        if not stations:
+            return 0 if target <= startFuel else -1
+        
+        heap = []
+        stations.append([target, float('inf')])
+        
+        tank, count, last = startFuel, 0, 0
+        
+        for pos, fuel in stations:
+            tank = tank - (pos - last)
+            
+            while heap and tank < 0:
+                tank += -1 * heapq.heappop(heap)
+                count += 1
+            
+            if tank < 0:
+                return -1
+            
+            heapq.heappush(heap, -1 * fuel)
+            last = pos
+            
+        return count
+            
+            
+        
