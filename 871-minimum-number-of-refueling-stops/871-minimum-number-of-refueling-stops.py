@@ -1,5 +1,9 @@
 class Solution:
     def minRefuelStops(self, target: int, startFuel: int, stations: List[List[int]]) -> int:
+        # Solution - Greedy 
+        # Time - O(NlogN)
+        # Space - O(N)
+        
         if not stations:
             return 0 if target <= startFuel else -1
         
