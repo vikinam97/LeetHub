@@ -1,7 +1,43 @@
 class Solution:
+    def calculateMinimumHP(self, dungeon: List[List[int]]) -> int:
+        h, w = len(dungeon), len(dungeon[0])
+        
+        dp  = [[0]*w for _ in range(h)]
+        
+        for i in reversed(range(h)):
+            for j in reversed(range(w)):
+                
+                if i == h-1 and j == w-1:
+                    dp[i][j] = min(dungeon[i][j], 0)
+                    continue
+                    
+                cost = float('-inf') + 1000
+                if i + 1 < h:
+                    cost = dp[i+1][j]
+                if j + 1 < w:
+                    cost = max(cost, dp[i][j+1])
+                
+                dp[i][j] = min(0, cost + dungeon[i][j])
+                
+        return abs(dp[0][0]) +1
+        
+        
+        
+        
+
+class Solution1:
+    def calculateMinimumHP(self, dungeon: List[List[int]]) -> int:
+        # Solution - Recusion + Memoization
+        # Time - O(N*M)
+        # Space - O(N*M)
+        
+        self.memo = {}
+        cost = self.recur(0, 0, dungeon)
+        return abs(cost) + 1
     
     def recur(self, i, j, dungeon):
         h, w = len(dungeon), len(dungeon[0])
+        
         if i >= h or j >= w:
             return float('-inf') + 1000
         
@@ -17,9 +53,3 @@ class Solution:
         self.memo[(i, j)] = min(cost, 0)
         
         return self.memo[(i, j)]
-    
-    def calculateMinimumHP(self, dungeon: List[List[int]]) -> int:
-        self.memo = {}
-        cost = self.recur(0, 0, dungeon)
-        # print(self.memo)
-        return abs(cost) + 1
