@@ -1,30 +1,4 @@
-class Solution:
-    def canPartitionKSubsets(self, A, k):
-        n, val = len(A), sum(A) / k
-        if val != floor(val):
-            return False
-        A.sort()
-        def btrack(i, space, k):
-            if k == 1: return True
-            for j in range(i, n):
-                if val >= A[j] > space: break
-                if j > i and A[j] == A[j-1] or A[j] > val: continue
-                num, A[j] = A[j], val + 1
-                if num == space:
-                    if btrack(0, val, k-1): return True
-                if btrack(j + 1, space - num, k): return True
-                A[j] = num
-            return False
-        return btrack(0, val, k)
-
-
-
-
-
-
-
-
-class Solution1:    
+class Solution:    
     def canPartitionKSubsets(self, nums: List[int], k: int) -> bool:
         if sum(nums) % k:
             return False
@@ -37,7 +11,7 @@ class Solution1:
             if curSum == target:
                 return backtrack(0, 0, k-1)
             for j in range(i, len(nums)):
-                if used[j] or curSum + nums[j] > target:
+                if used[j] or curSum + nums[j] > target or (j > 0 and nums[j] == nums[j-1] and not used[j-1]):
                     continue
                 used[j] = 1
                 if backtrack(j+1, curSum + nums[j], k):
