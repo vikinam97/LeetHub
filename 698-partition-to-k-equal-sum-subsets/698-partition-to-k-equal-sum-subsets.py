@@ -1,5 +1,9 @@
 class Solution:    
     def canPartitionKSubsets(self, nums: List[int], k: int) -> bool:
+        # Solution - Backtracking
+        # Time - O(O(K*2^N))
+        # Space - O(N)
+        
         if sum(nums) % k:
             return False
         nums.sort(reverse=True)
@@ -18,19 +22,6 @@ class Solution:
                     return True
                 used[j] = 0
         return backtrack(0, 0, k)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 
 class Solution1:    
     def canPartitionKSubsets(self, nums: List[int], k: int) -> bool:
