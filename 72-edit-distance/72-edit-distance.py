@@ -16,9 +16,7 @@ class Solution:
                 if word1[i-1] == word2[j-1]:
                     cdp[j] = pdp[j-1]
                 else:
-                    cdp[j] = min(pdp[j-1],
-                                  cdp[j-1],
-                                  pdp[j]) + 1
+                    cdp[j] = min(pdp[j-1], cdp[j-1], pdp[j]) + 1
             pdp = cdp
             
         return pdp[-1]
