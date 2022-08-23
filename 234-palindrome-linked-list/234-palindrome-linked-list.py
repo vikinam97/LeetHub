@@ -18,6 +18,9 @@ class Solution:
         return prev
     
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        # Soliution - traversal
+        # Time - O(N)
+        # Space - O(1)
         
         if not head.next:
             return True
