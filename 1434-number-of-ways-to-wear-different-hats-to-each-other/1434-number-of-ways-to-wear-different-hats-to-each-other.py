@@ -28,5 +28,5 @@ class Solution:
             for hat in hatList:
                 hatMap[hat].append(ppl)
 
-        return self.recur(0, 0, hatMap, len(hats)) % MOD
+        return self.recur(1, 0, hatMap, len(hats)) % MOD
         
