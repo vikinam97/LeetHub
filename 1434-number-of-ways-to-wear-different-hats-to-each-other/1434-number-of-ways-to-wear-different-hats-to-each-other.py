@@ -45,14 +45,11 @@ class Solution:
             return 0
         
         count = 0
-        count = (count + (self.recur(i+1, mask, hatMap, n) % MOD)) % MOD
+        count = count + self.recur(i+1, mask, hatMap, n)
         
         for ppl in hatMap[i+1]:
             if mask & (1 << ppl) == 0: 
-            
-                mask = mask | (1 << ppl)
-                count = (count + (self.recur(i+1, mask, hatMap, n) % MOD)) % MOD
-                mask = mask ^ (1 << ppl)
+                count = count + self.recur(i+1, mask | (1 << ppl), hatMap, n)
         
         self.memo[(i, mask)] = count
         return count
