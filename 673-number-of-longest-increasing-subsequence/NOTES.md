@@ -1,3 +1,4 @@
+```
 class Solution:
 def findNumberOfLIS(self, nums: List[int]) -> int:
 # Solution - LIS Iterative
@@ -20,3 +21,4 @@ for i in range(len(nums)):
 if dp[i] == maxSoFar:
 nos += cnt[i]
 return nos
+```
