@@ -1,32 +1,46 @@
 class Solution:
     def maxCoins(self, nums):
-        nums = [1] + [x for x in nums if x > 0] + [1]
         n = len(nums)
-        dp = [[0] * n for _ in range(n)]
-        for d in range(2, n):
-            for i in range(0, n - d):
-                j = i + d
-                for k in range(i + 1, j):
-                    last_burn = nums[i] * nums[k] * nums[j]
-                    dp[i][j] = max(dp[i][j], dp[i][k] + dp[k][j] + last_burn)
-        return dp[0][n - 1]
-#     def recur(self, i, j, nums):
-#         if i > j: return 0
+        nums = [1] + nums + [1]
+        dp = [[0] * (n+2) for _ in range(n+2)]
         
-#         if (i, j) in self.memo:
-#             return self.memo[(i, j)]
+        for i in reversed(range(1, n+1)):
+            for j in range(1, n+1):
+                if i > j: continue
+                    
+                maxi = float('-inf')
+                for k in range(i, j+1):
+                    cost = ((nums[i-1] * nums[k] * nums[j+1]) + 
+                           dp[i][k-1] + dp[k+1][j])
+                    maxi = max(maxi, cost)
+                
+                dp[i][j] = maxi
         
-#         cost = float('-inf')
-        
-#         for k in range(i, j+1):
-#             cost = max(cost, (nums[i-1] * nums[k] * nums[j+1]) +
-#                    self.recur(i, k-1, nums) +
-#                    self.recur(k+1, j, nums)) 
-            
-#         self.memo[(i, j)] = cost
-#         return cost
+        return dp[1][n]
+                    
     
-#     def maxCoins(self, nums: List[int]) -> int:
-#         self.memo = {}
-#         return self.recur(1, len(nums), [1] + nums + [1])
+class Solution1:
+    def maxCoins(self, nums: List[int]) -> int:
+        # Solution - Recusion + Memoization
+        # Time - O(N*N*N)
+        # Space - O(N*N)
+        
+        self.memo = {}
+        return self.recur(1, len(nums), [1] + nums + [1])
+    
+    def recur(self, i, j, nums):
+        if i > j: return 0
+        
+        if (i, j) in self.memo:
+            return self.memo[(i, j)]
+        
+        cost = float('-inf')
+        
+        for k in range(i, j+1):
+            cost = max(cost, (nums[i-1] * nums[k] * nums[j+1]) +
+                   self.recur(i, k-1, nums) +
+                   self.recur(k+1, j, nums)) 
+            
+        self.memo[(i, j)] = cost
+        return cost
         
