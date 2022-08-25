@@ -1,5 +1,9 @@
 class Solution:
     def maxCoins(self, nums):
+        # Solution - Dynamic Programming - Tabulation
+        # Time - O(N*N*N)
+        # Space - O(N*N)
+        
         n = len(nums)
         nums = [1] + nums + [1]
         dp = [[0] * (n+2) for _ in range(n+2)]
@@ -21,7 +25,7 @@ class Solution:
     
 class Solution1:
     def maxCoins(self, nums: List[int]) -> int:
-        # Solution - Recusion + Memoization
+        # Solution - Recusion + Memoization - TLE leetcode
         # Time - O(N*N*N)
         # Space - O(N*N)
         
