@@ -10,7 +10,6 @@ class Solution:
             
             stack.append(n)
         
-        print(stack)
         while stack and count < k:
             stack.pop()
             count += 1
