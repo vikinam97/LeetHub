@@ -1,5 +1,8 @@
 class Solution:
     def removeKdigits(self, num: str, k: int) -> str:
+        # Solution - Monotonic Stack
+        # Time - O(N)
+        # Space - O(N)
         
         stack = []
         count = 0
