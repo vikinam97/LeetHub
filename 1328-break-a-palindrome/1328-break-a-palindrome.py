@@ -1,5 +1,9 @@
 class Solution:
     def breakPalindrome(self, palindrome: str) -> str:
+        # Solution - traversal and make fist !a to a else last to b
+        # Time - O(N)
+        # Space - O(1)
+        
         n = len(palindrome) 
         if n == 1:
             return ""
@@ -11,9 +15,8 @@ class Solution:
                 
             if palindrome[i] != 'a':
                 palindrome[i] = 'a'
-                break
+                return "".join(palindrome)
             
-            if i == n-1:
-                palindrome[i] = 'b'
+        palindrome[-1] = 'b'
         
         return "".join(palindrome)
