@@ -1,8 +1,11 @@
 class Solution:
     def maximalRectangle(self, matrix: List[List[str]]) -> int:
-        
+        # Solution - using histogram at every row 
+        # Time - O(R*C)
+        #     - R = no of rows
+        #     - C = no of cols
+        # Space - O(C)
         histogram = [0]*len(matrix[0])
-        
         maxSoFar = 0
         
         for i in range(len(matrix)):
