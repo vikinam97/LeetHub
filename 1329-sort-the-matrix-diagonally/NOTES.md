@@ -1,6 +1,9 @@
 ```
 class Solution:
 def diagonalSort(self, A):
+# Solution - get vales, sort and put back
+# Time - O(NlogN)
+# Space - O(1)
 n, m = len(A), len(A[0])
 d = collections.defaultdict(list)
 for i in range(n):
