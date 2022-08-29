@@ -1,5 +1,9 @@
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
+        # Solution - hashmap and flag
+        # Time - O(N)
+        # Space - O(N)
+        
         hashMap = defaultdict(list)
         
         stage, dr = 0, 1
