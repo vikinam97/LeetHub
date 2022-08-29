@@ -1,5 +1,9 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
+        # Solution - DFS traversal
+        # Time - O(N)
+        # Space - O(N)
+        
         n, m = len(grid), len(grid[0])
         
         count = 0
