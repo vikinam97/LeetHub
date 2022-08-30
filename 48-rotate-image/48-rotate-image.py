@@ -1,5 +1,8 @@
 class Solution:
     def rotate(self, matrix: List[List[int]]) -> None:
+        # Solution - traversal
+        # Time - O(N)
+        # Space - O(1)
         top, bottom = 0, len(matrix[0])-1
         
         while top < bottom:
