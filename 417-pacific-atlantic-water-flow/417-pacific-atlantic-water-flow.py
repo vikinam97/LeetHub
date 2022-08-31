@@ -14,7 +14,16 @@ class Solution:
                 self.dfs(x, y, grid, visited)
     
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
+        # Solution - DFS outer boundary
+        # Time - O(N*M)
+        #     - N = len(heights)
+        #     - M = len(heights[0])
+        # Space - O(N*M)
+        
+        
         n, m = len(heights), len(heights[0])
+        
+        # to check flow from pacific ocean top and left
         pacificFlow = [[0]*m for _ in range(n)]
         
         for i in range(n):
@@ -22,7 +31,8 @@ class Solution:
         
         for j in range(m):
             self.dfs(0, j, heights, pacificFlow)
-            
+        
+        # to check flow from atlantic ocean bottom and right
         atlanticFlow = [[0]*m for _ in range(n)]
         
         for i in range(n):
@@ -31,6 +41,7 @@ class Solution:
         for j in range(m):
             self.dfs(n-1, j, heights, atlanticFlow)
         
+        # all regions colliding         
         result = []
         for i in range(n):
             for j in range(m):
