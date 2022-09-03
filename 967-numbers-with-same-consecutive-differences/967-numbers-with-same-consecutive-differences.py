@@ -1,8 +1,8 @@
 class Solution:
     def numsSameConsecDiff(self, n: int, k: int) -> List[int]:
         # Solution - Backtracking
-        # Time - O(n^9)
-        # Space - O(n^9)
+        # Time - O(2^N)
+        # Space - O(2^N)
         
         self.result = []
         
