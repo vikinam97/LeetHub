@@ -1,4 +1,14 @@
 class Solution:
+    def numsSameConsecDiff(self, n: int, k: int) -> List[int]:
+        # Solution - Backtracking
+        # Time - O(n^9)
+        # Space - O(n^9)
+        
+        self.result = []
+        
+        self.recur(n, k, [])
+        
+        return self.result
     
     def recur(self, n, k, path):
         if n <= 0:
@@ -15,10 +25,3 @@ class Solution:
             path.append(i)
             self.recur(n-1, k, path)
             path.pop()
-    
-    def numsSameConsecDiff(self, n: int, k: int) -> List[int]:
-        self.result = []
-        
-        self.recur(n, k, [])
-        
-        return self.result
