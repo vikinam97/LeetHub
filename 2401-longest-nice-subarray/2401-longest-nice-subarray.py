@@ -1,5 +1,8 @@
 class Solution:
     def longestNiceSubarray(self, nums: List[int]) -> int:
+        # Solution - bit manipulation 
+        # Time - O(N*N)
+        # Space - O(1)
         
         maxSoFar = 1
         
