@@ -5,7 +5,7 @@ class Solution:
         if k == 0:
             return 1 if pos == end else 0
         
-        if pos - end > k:
+        if abs(pos - end) > k:
             return 0
         
         if (pos, k) in self.memo:
