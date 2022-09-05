@@ -1,3 +1,4 @@
+```
 MOD = (10**9) + 7
 ​
 class Solution:
@@ -22,3 +23,4 @@ self.memo[(pos, k)] = (self.recur(pos, n, k-1) +
 self.recur(pos+1, n, k-1) +
 self.recur(pos-1, n, k-1))
 return self.memo[(pos, k)]
+```
