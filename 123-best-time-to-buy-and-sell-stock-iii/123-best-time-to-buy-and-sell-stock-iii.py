@@ -1,5 +1,11 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
+        # Solution - DP - Iterative - Space Optimized
+        # Time - O(N*2*K)
+        #     - N = len(prices)
+        #     - k = 2
+        # Space - O(2*K)
+        
         n = len(prices)
         pdp = [[0] * 3 for h in range(2)]
         
@@ -24,6 +30,12 @@ class Solution:
 
 class Solution1:
     def maxProfit(self, prices: List[int]) -> int:
+        # Solution - DP - Iterative
+        # Time - O(N*2*K)
+        #     - N = len(prices)
+        #     - k = 2
+        # Space - O(N*2*K)
+        
         n = len(prices)
         dp = [[[0] * 3 for h in range(2)] for _ in range(n + 1)]
         
