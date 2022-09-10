@@ -1,4 +1,4 @@
-class Solution:
+class Solution1:
     def maxProfit(self, prices: List[int]) -> int:
         n = len(prices)
         dp = [[0] * 2 for _ in range(n + 1)]
@@ -46,7 +46,7 @@ class Solution1:
         
         return profit
 
-class Solution2:
+class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         # Solution - Recursion + Memoization
         # Time - O(N*2)
