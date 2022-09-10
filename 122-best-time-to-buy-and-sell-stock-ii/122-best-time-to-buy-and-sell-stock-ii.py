@@ -29,7 +29,7 @@ class Solution1:
         
 
 
-class Solution1:
+class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         # Solution - buy at valley and sell at peak
         # Time - O(N)
@@ -46,7 +46,7 @@ class Solution1:
         
         return profit
 
-class Solution:
+class Solution2:
     def maxProfit(self, prices: List[int]) -> int:
         # Solution - Recursion + Memoization
         # Time - O(N*2)
