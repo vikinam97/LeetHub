@@ -1,4 +1,14 @@
 class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        # Solution - Recursion + Memoization
+        # Time - O(N*2*K)
+        #     - N = len(prices)
+        #     - k = 2
+        # Space - O(N*2*K)
+        
+        self.memo = {}
+        # 1 - BUY , 0 - SELL 
+        return self.recur(0, 1, 2, prices)
     
     def recur(self, i, canBuy, k, prices):
         if i >= len(prices) or k <= 0:
@@ -19,7 +29,3 @@ class Solution:
         self.memo[(i, k, canBuy)] = result
         return result
     
-    def maxProfit(self, prices: List[int]) -> int:
-        self.memo = {}
-        # 1 - BUY , 0 - SELL 
-        return self.recur(0, 1, 2, prices)
