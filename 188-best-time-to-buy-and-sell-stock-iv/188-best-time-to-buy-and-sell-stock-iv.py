@@ -1,5 +1,36 @@
 class Solution:
     def maxProfit(self, K, prices: List[int]) -> int:
+        # Solution - DP - Iterative - Space Optimized
+        # Time - O(N*2*K)
+        #     - N = len(prices)
+        #     - k = 2
+        # Space - O(2*K)
+        
+        n = len(prices)
+        pdp = [[0] * (K+1) for h in range(2)]
+        
+        for i in reversed(range(n)):
+            cdp = [[0] * (K+1) for h in range(2)]
+            for canBuy in reversed(range(2)):
+                for k in reversed(range(1, (K+1))):
+                    result = float('-inf')
+        
+                    if canBuy:
+                        result = max(-prices[i] + pdp[0][k],
+                                    pdp[1][k])
+                    else:
+                        result = max(prices[i] + pdp[1][k-1],
+                                    pdp[0][k])
+                    
+                    cdp[canBuy][k] = result
+            
+            pdp = cdp
+        
+        return pdp[1][K]
+
+
+class Solution1:
+    def maxProfit(self, K, prices: List[int]) -> int:
         # Solution - DP - Iterative
         # Time - O(N*2*K)
         #     - N = len(prices)
@@ -25,7 +56,7 @@ class Solution:
         
         return dp[0][1][K]
 
-class Solution1:
+class Solution2:
     def maxProfit(self, k, prices: List[int]) -> int:
         # Solution - Recursion + Memoization
         # Time - O(N*2*K)
