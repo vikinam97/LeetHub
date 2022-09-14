@@ -6,6 +6,25 @@
 #         self.right = right
 class Solution:    
     def pseudoPalindromicPaths (self, root: Optional[TreeNode]) -> int:
+        return self.recur(root, 0)
+    
+    def recur(self, node, path):
+        if not node:
+            return 0
+        
+        path = path ^ (1 << node.val)
+            
+        if not node.left and not node.right:
+            count = 1 if (path & path-1) == 0 else 0
+        else:
+            count = (self.recur(node.left, path) +
+               self.recur(node.right, path))
+        
+        path = path ^ (1 << node.val)
+        return count
+
+class Solution1:    
+    def pseudoPalindromicPaths (self, root: Optional[TreeNode]) -> int:
         return self.recur(root, defaultdict(int), 0, 0)
     
     def recur(self, node, freq, even, odd):
