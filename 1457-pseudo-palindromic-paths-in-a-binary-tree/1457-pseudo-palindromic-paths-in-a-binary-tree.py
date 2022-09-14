@@ -4,7 +4,9 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution:
+class Solution:    
+    def pseudoPalindromicPaths (self, root: Optional[TreeNode]) -> int:
+        return self.recur(root, defaultdict(int), 0, 0)
     
     def recur(self, node, freq, even, odd):
         if not node:
@@ -27,6 +29,3 @@ class Solution:
         
         freq[node.val] = max(0, freq[node.val]-1)
         return count
-    
-    def pseudoPalindromicPaths (self, root: Optional[TreeNode]) -> int:
-        return self.recur(root, defaultdict(int), 0, 0)
