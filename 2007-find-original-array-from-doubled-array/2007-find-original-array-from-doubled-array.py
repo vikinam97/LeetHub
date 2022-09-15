@@ -1,5 +1,8 @@
 class Solution:
     def findOriginalArray(self, changed: List[int]) -> List[int]:
+        # Solution - Sorting + Deque
+        # Time - O(NlogN)
+        # Space - O(N)
         
         queue, result = collections.deque([]), []
         
@@ -16,10 +19,6 @@ class Solution:
         
         return result 
                 
-        
-        
-        
-
 class Solution1:
     def findOriginalArray(self, changed: List[int]) -> List[int]:
         # Solution - Sorting + Map
