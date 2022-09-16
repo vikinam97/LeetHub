@@ -20,9 +20,7 @@ class Solution:
         
         while heap:
             distance, node = heapq.heappop(heap)
-            
-            if visited[node]: continue
-            
+                        
             for adj, dv in adjMat[node]:
                 if dv + distance < dist[adj]:
                     dist[adj] = dv + distance
