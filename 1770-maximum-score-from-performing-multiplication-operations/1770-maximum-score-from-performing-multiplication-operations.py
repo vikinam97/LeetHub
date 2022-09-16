@@ -7,8 +7,8 @@ class Solution:
         for i in range(m - 1, -1, -1):
             for s in range(i, -1, -1):
                 dp[i][s] = max(
-                    muls[i]*nums[s] + dp[i+1][s+1],
-                    muls[i]*nums[n - 1 - (i - s)] + dp[i+1][s])
+                    (muls[i]*nums[s]) + dp[i+1][s+1],
+                    (muls[i]*nums[n - 1 - (i - s)]) + dp[i+1][s])
                 
         return dp[0][0]
     
