@@ -15,19 +15,8 @@ class Solution:
                 dp[op][left] = max(multipliers[op] * nums[left] + dp[op + 1][left + 1],
                                    multipliers[op] * nums[n - 1 - (op - left)] + dp[op + 1][left])
 
-        return dp[0][0]               
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
+        return dp[0][0]
+    
 class Solution1:
     def maximumScore(self, nums: List[int], multipliers: List[int]) -> int:
         # Solution - Recusion + Memoization TLE
