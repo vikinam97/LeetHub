@@ -1,25 +1,20 @@
 class Solution:
-    def maximumScore(self, nums: List[int], multipliers: List[int]) -> int:
-
-        # Number of Operations
-        m = len(multipliers)
-
-        # For Right Pointer
-        n = len(nums)
-
-        dp = [[0] * (m + 1) for _ in range(m + 1)]
-
-        for op in range(m - 1, -1, -1):
-            for left in range(op, -1, -1):
-
-                dp[op][left] = max(multipliers[op] * nums[left] + dp[op + 1][left + 1],
-                                   multipliers[op] * nums[n - 1 - (op - left)] + dp[op + 1][left])
-
+    def maximumScore(self, nums: List[int], muls: List[int]) -> int:
+        n, m = len(nums), len(muls)
+        
+        dp = [[0]*(m+1) for _ in range(m+1)]
+        
+        for i in range(m - 1, -1, -1):
+            for s in range(i, -1, -1):
+                dp[i][s] = max(
+                    muls[i]*nums[s] + dp[i+1][s+1],
+                    muls[i]*nums[n - 1 - (i - s)] + dp[i+1][s])
+                
         return dp[0][0]
     
 class Solution1:
     def maximumScore(self, nums: List[int], multipliers: List[int]) -> int:
-        # Solution - Recusion + Memoization TLE
+        # Solution - TLE - Recusion + Memoization
         # Time - O(M*M)
         #     - M - len(muls)
         # Space - O(M*M)
