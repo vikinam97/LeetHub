@@ -15,33 +15,21 @@ class Solution:
         # print(starSum)
 
         for s, e in queries:
-            # sb = bisect.bisect_left(barIdxs, s)
-            # eb = bisect.bisect_right(barIdxs, e)
+            sb = bisect.bisect_left(barIdxs, s)
+            eb = bisect.bisect_right(barIdxs, e)
+            # print(sb, eb)
             
-            l = bisect.bisect_left(barIdxs, s)
-            
-            # find the right most candles in the query
-            r = bisect.bisect_right(barIdxs, e)
-            
-            # if l == r, it means there is no candle in
-            # the query range
-            if l == r:
+            if sb == eb:
                 result.append(0)
                 continue
             
-            # find the left most candle index in original array
-            l_idx = barIdxs[l]
+            startStarSum = starSum[barIdxs[sb]]
+            lastStarSum = starSum[barIdxs[eb-1]]
+
+            # print(startStarSum, lastStarSum)
+            # print("-----------")
             
-            # find the right most candle index in original array
-            r_idx = barIdxs[r-1]
-            
-            # find the candles count by checking the index in cand_idx
-            cand_count = r - l
-            
-            # `r_idx - l_idx + 1`: the number of something between
-            # left most and right most candles
-            # then minus the number of candles count
-            result.append(r_idx - l_idx + 1 - cand_count)
+            result.append(lastStarSum - startStarSum)
             
         return result
             
