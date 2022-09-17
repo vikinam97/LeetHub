@@ -5,7 +5,7 @@ class Solution:
         i, j = 0, n-1
         
         result = []
-        print(products)
+        
         for count, char in enumerate(searchWord):
             
             while i < n and (count >= len(products[i]) or char != products[i][count]):
