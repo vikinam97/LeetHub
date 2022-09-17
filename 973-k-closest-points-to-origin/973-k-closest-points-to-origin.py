@@ -4,6 +4,10 @@ class Solution:
         return math.dist(point1, point2)
     
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        # Solution - Heap
+        # Time - O(KlogN + N)
+        # Space - O(N)
+        
         heap = []
         
         for point in points:
