@@ -10,11 +10,11 @@ class Solution:
         ltrLogs = []
         for log in logs:
             temp = log
-            log = log.split(" ")
+            log = log.split(" ", maxsplit=1)
             if log[-1][0].isnumeric():
                 digiLogs.append(temp)
             else:
-                ltrLogs.append((" ".join(log[1:]), log[0]))
+                ltrLogs.append((log[1], log[0]))
         
         result = []
         
