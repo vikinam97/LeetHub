@@ -1,5 +1,11 @@
 class Solution:
     def reorderLogFiles(self, logs: List[str]) -> List[str]:
+        # Solution - parsing + sorting
+        # Time - (NlogN + N + M)
+        #     - N = len(ltrLogs)
+        #     - M = len(digiLogs)
+        # Space - O(N+M)
+        
         digiLogs = []
         ltrLogs = []
         for log in logs:
