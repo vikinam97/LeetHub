@@ -1,5 +1,11 @@
 class Solution:
     def findDuplicate(self, paths: List[str]) -> List[List[str]]:
+        # Solution - Hash Map on cntnt
+        # Time - O(N*M)
+        #     - N = len(rootPaths)
+        #     - M = len(every folder files)
+        # Space - O(N*M)
+        
         
         cntntHash = defaultdict(list)
         
