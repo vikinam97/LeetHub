@@ -1,5 +1,9 @@
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
+        # Solution - 3 pointer
+        # Time - O(N)
+        # Space - O(1)
+        
         i, j, k = 0, len(nums)-1, 0
         
         while k <= j:
