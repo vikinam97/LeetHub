@@ -1,19 +1,26 @@
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        hashSet = {}
-        for i in range(len(nums1)):
-            hashSet[nums1[i]] = i
         
-        resultList = [-1] * len(nums1)
-        # decreasing order
-        monoStack = []
+        stack = []
+        hashMap = {}
+        
+        nxtGrt = [-1] * len(nums2)
+        
         for i in range(len(nums2)):
-            while monoStack and monoStack[-1] < nums2[i]:
-                ele = monoStack.pop()
-                if ele in hashSet:
-                    resultList[hashSet[ele]] = nums2[i]
+            hashMap[nums2[i]] = i
+            while stack and nums2[i] > stack[-1][0]:
+                val, idx = stack.pop()
+                nxtGrt[idx] = nums2[i]
             
-            monoStack.append(nums2[i])
+            stack.append([nums2[i], i])
         
-        return resultList
-                
+        
+        result = []
+        for i in range(len(nums1)):
+            idx = hashMap[nums1[i]]
+            result.append(nxtGrt[idx])
+        
+        return result
+            
+        
+        
