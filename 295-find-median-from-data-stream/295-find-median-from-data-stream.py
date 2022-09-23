@@ -1,38 +1,44 @@
+from heapq import heappush, heappop
+
 class MedianFinder:
 
     def __init__(self):
-        import heapq
         self.maxHeap = []
         self.minHeap = []
-        heapq.heapify(self.maxHeap)
-        heapq.heapify(self.minHeap)
-
-    def addNum(self, num: int) -> None:
-        heapq.heappush(self.maxHeap, -1 * num)
-        if (self.minHeap and self.maxHeap and 
-            ((-1 * self.maxHeap[0]) > self.minHeap[0])):
-            ele = heapq.heappop(self.maxHeap)
-            heapq.heappush(self.minHeap, -1 * ele)
         
-        # uneven sizes
-        if len(self.maxHeap) > len(self.minHeap) + 1:
-            ele = heapq.heappop(self.maxHeap)
-            heapq.heappush(self.minHeap, -1 * ele)
-            
-        if len(self.minHeap) > len(self.maxHeap) + 1:
-            ele = heapq.heappop(self.minHeap)
-            heapq.heappush(self.maxHeap, -1 * ele)
-            
+    def addNum(self, num: int) -> None:
+        heappush(self.maxHeap, -1*num)
+        
+        if self.minHeap and self.maxHeap and (-1*self.maxHeap[0]) > self.minHeap[0]:
+            num = heappop(self.maxHeap)
+            heappush(self.minHeap, -1*num)
+        
+        self.balance()
+        
+    def balance(self):
+        if len(self.maxHeap) - len(self.minHeap) > 1:
+            num = -1*heappop(self.maxHeap)
+            heappush(self.minHeap, num)
+        if len(self.minHeap) - len(self.maxHeap) > 1:
+            num = heappop(self.minHeap)
+            heappush(self.maxHeap, -1*num)
+        
 
     def findMedian(self) -> float:
-        # print(self.maxHeap)
-        # print(self.minHeap)
-        if len(self.maxHeap) > len(self.minHeap):
-            return -1 * self.maxHeap[0]
+        
+        if len(self.minHeap) < len(self.maxHeap):
+            return -1*self.maxHeap[0]
         elif len(self.minHeap) > len(self.maxHeap):
             return self.minHeap[0]
         else:
-            return ((-1 * self.maxHeap[0]) + (self.minHeap[0])) / 2            
+            return (self.minHeap[0] + (-1*self.maxHeap[0])) / 2
+        
+            
+        
+        
+        
+        
+        
 
 
 # Your MedianFinder object will be instantiated and called as such:
