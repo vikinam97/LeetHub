@@ -18,23 +18,24 @@ class NumArray:
             return self.tree[idx]
         
         generateTree(0, len(nums)-1, 1, nums)
-
-    def updateRecur(self, idx, l, r, pos, val):
-        if pos > r or pos < l:
-            return self.tree[idx]
-        if l == r:
-            self.tree[idx] = val
-            return self.tree[idx]
         
-        mid = l + ((r - l ) // 2)
-        lv = self.updateRecur(2 * idx, l, mid, pos, val)
-        rv = self.updateRecur((2 * idx) + 1, mid + 1, r, pos, val)
+    def update(self, i: int, v: int) -> None:
         
-        self.tree[idx] = lv + rv
-        return self.tree[idx]
-        
-    def update(self, index: int, val: int) -> None:
-        self.updateRecur(1, 0, len(self.nums)-1, index, val)
+        def recur(idx, s, e, index, val):
+            if index < s or index > e:
+                return self.tree[idx]
+            if s == e:
+                self.tree[idx] = val
+                return val
+            
+            mid = s + ((e - s) // 2)
+            l = recur(2*idx, s, mid, index, val)
+            r = recur(2*idx+1, mid+1, e, index, val)
+            
+            self.tree[idx] = l + r
+            return l + r
+            
+        recur(1, 0, len(self.nums)-1, i, v)
         
 
     def sumRange(self, left: int, right: int) -> int:
