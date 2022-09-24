@@ -10,7 +10,7 @@ class Solution:
             while stack and stack[-1][0] > nums[i]:
                 val, idx = stack.pop()
                 right = i-idx
-                left = idx - (stack[-1][1] if stack else 0)
+                left = idx - stack[-1][1]
                 
                 cont = val * left * right
                 result += cont
