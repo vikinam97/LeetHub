@@ -1,14 +1,23 @@
 class Solution:
     def sumSubarrayMins(self, nums: List[int]) -> int:
-        # Solution - monotonic stack
-        # Time - O(N)
-        # Space - O(N)
         nums.append(-1)
-        stack=[-1]
-        res=0
+        stack = [[-1, -1]]
+        
+        result = 0
+        
         for i in range(len(nums)):
-            while nums[i]<nums[stack[-1]]:
-                idx=stack.pop()
-                res+=nums[idx]*(i-idx)*(idx-stack[-1])
-            stack.append(i)
-        return res%(10**9+7)
+            
+            while stack and stack[-1][0] > nums[i]:
+                val, idx = stack.pop()
+                right = i-idx
+                left = idx - (stack[-1][1] if stack else -1)
+                
+                cont = val * left * right
+                result += cont
+            
+            stack.append([nums[i], i])
+        
+        return result % (10**9 + 7)
+                
+    
+    
