@@ -6,7 +6,8 @@ class DSUF:
     def find(self, a):
         if self.list[a] == -1:
             return a
-        return self.find(self.list[a])
+        self.list[a] = self.find(self.list[a])
+        return self.list[a]
     
     def union(self, a, b):
         pa = self.find(a)
@@ -19,6 +20,10 @@ class DSUF:
 
 class Solution:
     def equationsPossible(self, equations: List[str]) -> bool:
+        # Solution - disjoint set
+        # Time - O(NlogN)
+        # Space - O(26) = O(1)
+        
         dsu = DSUF(26)
         
         def getCharMap(char):
