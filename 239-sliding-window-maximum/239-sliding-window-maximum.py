@@ -2,6 +2,9 @@ from heapq import heapify, heappop, heappush
 
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        # Solution - Heap
+        # Time - O(NlogK)
+        # Space - O(K)
         
         heap = []
         
