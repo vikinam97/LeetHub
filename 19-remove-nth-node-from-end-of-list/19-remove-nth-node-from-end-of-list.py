@@ -5,7 +5,10 @@
 #         self.next = next
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-                
+        # Solution - move one node n ahead and then move both same pase
+        # Time - O(N)
+        # Space - O(1)
+        
         slow, fast = head, head
         prev = None
         while fast and n:
