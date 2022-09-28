@@ -1,6 +1,10 @@
 from collections import defaultdict
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        # Solution - Topo Sort
+        # Time - O(N*P)
+        # Space - O(N*P)
+        
         
         links = defaultdict(list)
         courseDep = [0] * numCourses
@@ -13,12 +17,11 @@ class Solution:
         for i in range(len(courseDep)):
             if courseDep[i] == 0:
                 bfs.append(i)
-        # print(courseDep)
-        # print(links)
         seen = set()
+        
         while bfs:
             nxt = []
-            # print(bfs)
+
             for c in bfs:
                 seen.add(c)
                 for nei in links[c]:
